@@ -1,36 +1,183 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Examinr.ai Waitlist
 
-## Getting Started
+> **Study with confidence. Prepare with predictive intelligence.**
 
-First, run the development server:
+This repository contains the public waitlist website for **Examinr.ai**.
+
+The waitlist serves as the first public introduction to the vision behind Examinr.ai, allowing students, teachers, institutions, and early supporters to learn about the platform and register for early access while the core product is being built.
+
+The full Examinr.ai platform is currently under active development behind this landing page.
+
+---
+
+## What is Examinr.ai?
+
+Examinr.ai is a predictive AI learning platform designed to help students prepare smarter—not just harder.
+
+Instead of acting like another generic AI chatbot, Examinr.ai combines:
+
+- 📈 Predictive examination analysis
+- 📚 Trusted educational resources
+- 🏫 Institution collaboration
+- 🧠 Personalised study sessions
+- 📊 Learning insights
+- 📝 AI-powered revision tools
+
+Our goal is simple:
+
+> Help every student know **what to study**, **why it matters**, and **how to prepare with confidence.**
+
+---
+
+## About this repository
+
+This repository currently contains the **official waitlist website**.
+
+Its responsibilities include:
+
+- Presenting the Examinr.ai vision
+- Explaining the platform for students and institutions
+- Collecting waitlist registrations
+- Sharing development updates
+- Building an early community before launch
+
+The production application itself is **not** part of this repository.
+
+---
+
+## Roadmap
+
+The waitlist is only the beginning.
+
+The platform currently in development includes:
+
+- AI-powered study workspace
+- Predictive examination analysis
+- Personalised study sessions
+- AI-generated quizzes
+- Essay preparation
+- Flashcards
+- Memory tricks
+- Video recommendations
+- Institution resource publishing
+- Online examinations
+- Student readiness analytics
+- And much more.
+
+---
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Supabase
+- Vercel
+
+---
+
+## Running locally
+
+Clone the repository.
+
+```bash
+git clone https://github.com/<username>/<repository>.git
+```
+
+Install dependencies.
+
+```bash
+npm install
+```
+
+Run the development server.
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+This project is deployed with **Vercel**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Every push to the main branch automatically triggers a new production deployment.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are welcome, but please follow these guidelines before opening a Pull Request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 1. Create an issue first
+
+If your contribution changes behaviour, introduces a feature, or modifies the design, please open an issue first so we can discuss the direction.
+
+### 2. Create a feature branch
+
+Do **not** work directly on `main`.
+
+```bash
+git checkout -b feature/amazing-feature
+```
+
+### 3. Keep Pull Requests focused
+
+Small, focused Pull Requests are much easier to review than large unrelated changes.
+
+### 4. Follow the existing design language
+
+Examinr.ai intentionally follows a minimal visual identity.
+
+Please avoid introducing components, colours, or interactions that don't align with the current design system.
+
+### 5. Test before submitting
+
+Before opening a Pull Request, ensure the project builds successfully.
+
+```bash
+npm run lint
+
+npm run build
+```
+
+---
+
+## Project Status
+
+🚧 Active Development
+
+The waitlist is production-ready.
+
+The core Examinr.ai platform is currently under development.
+
+---
+
+## Connect
+
+If you're interested in collaborating, contributing, or simply following the journey, feel free to reach out through the links available on the waitlist website.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+<p align="center">
+
+**Built by a student. For students.**
+
+*Study with confidence.*
+
+</p>
