@@ -260,6 +260,9 @@ This document should always reflect the current state of the repository.
 - Created project standards.
 - Added animation guidelines.
 - Completed database guidelines.
+- Route architecture established (Landing Page, Research, Admin routes).
+- Layouts created.
+- Placeholder pages added.
 
 ### Decisions
 
@@ -267,6 +270,7 @@ This document should always reflect the current state of the repository.
 - Vercel selected for deployment.
 - Prisma chosen as the ORM.
 - Lucide React selected as the only icon library.
+- `/admin/home` simplified to just `/admin` as the dashboard route.
 
 ### Next Session
 
