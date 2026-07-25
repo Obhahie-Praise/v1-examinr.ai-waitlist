@@ -83,19 +83,19 @@ The platform currently in development includes:
 Clone the repository.
 
 ```bash
-git clone https://github.com/<username>/<repository>.git
+git clone https://github.com/Obhahie-Praise/examiner.ai.git
 ```
 
 Install dependencies.
 
 ```bash
-npm install
+pnpm install
 ```
 
 Run the development server.
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Open your browser:
@@ -145,9 +145,9 @@ Please avoid introducing components, colours, or interactions that don't align w
 Before opening a Pull Request, ensure the project builds successfully.
 
 ```bash
-npm run lint
+pnpm run lint
 
-npm run build
+pnpm run build
 ```
 
 ---
