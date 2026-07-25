@@ -83,7 +83,7 @@ The platform currently in development includes:
 Clone the repository.
 
 ```bash
-git clone https://github.com/Obhahie-Praise/examiner.ai.git
+git clone https://github.com/Obhahie-Praise/v1-examinr.ai-waitlist.git
 ```
 
 Install dependencies.
