@@ -48,7 +48,7 @@ export function Navbar() {
           className={cn(
             "pointer-events-auto flex items-center justify-between",
             isScrolled
-              ? "mt-6 px-6 py-2.5 w-full md:mx-0 mx-4 max-w-2xl rounded-full bg-app-bg/70 backdrop-blur-md border border-light-border shadow-lg shadow-black/20 gap-80"
+              ? "mt-6 px-6 py-2.5 w-full md:mx-0 mx-4 max-w-2xl rounded-full bg-app-bg/70 backdrop-blur-md border border-light-border shadow-lg shadow-black/20"
               : "w-full max-w-[1440px] px-6 md:px-[130px] py-[40px] bg-transparent border-transparent",
           )}
         >
@@ -74,6 +74,14 @@ export function Navbar() {
                   width={isScrolled ? 80 : 183}
                   height={isScrolled ? 18 : 42}
                   alt="Examinr Logo"
+                  className="hidden md:block"
+                />
+                <Image
+                  src="/examinr-logo-collasped.svg"
+                  width={80}
+                  height={18}
+                  alt="Examinr Logo"
+                  className="block md:hidden"
                 />
               </motion.span>
             </motion.div>
@@ -144,9 +152,9 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <Image
-                  src={"/examinr-logo-collasped.svg"}
-                  width={isScrolled ? 80 : 183}
-                  height={isScrolled ? 18 : 42}
+                  src="/examinr-logo-collasped.svg"
+                  width={80}
+                  height={18}
                   alt="Examinr Logo"
                 />
               </Link>
