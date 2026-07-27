@@ -48,7 +48,7 @@ export function Navbar() {
           className={cn(
             "pointer-events-auto flex items-center justify-between",
             isScrolled
-              ? "mt-6 px-6 py-2.5 w-full md:mx-0 mx-4 max-w-2xl rounded-full bg-app-bg/70 backdrop-blur-md border border-light-border shadow-lg shadow-black/20"
+              ? "mt-6 px-6 py-2.5 w-full md:mx-0 mx-4 max-w-2xl rounded-full bg-app-bg/70 backdrop-blur-sm border border-light-border shadow-lg shadow-black/20"
               : "w-full max-w-[1440px] px-6 md:px-[130px] py-[40px] bg-transparent border-transparent",
           )}
         >
@@ -111,7 +111,7 @@ export function Navbar() {
 
           {/* Right Actions: CTA & Hamburger */}
           <motion.div layout className="flex items-center gap-4">
-            {!isScrolled && (<div className="text-xs flex items-center gap-6">
+            {!isScrolled && (<div className="text-xs hidden md:flex items-center gap-6">
               <div className="w-fit h-fit flex items-center relative">
                 <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border z-[1000]"></span>
                 <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border absolute left-2.25 z-[1000]"></span>
