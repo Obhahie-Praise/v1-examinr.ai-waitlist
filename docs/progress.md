@@ -1,6 +1,6 @@
 # Progress
 
-> Last Updated: July 2026
+> Last Updated: 2026-07-27
 
 This document tracks the current development progress of the Examinr.ai Waitlist.
 
@@ -57,9 +57,11 @@ Vercel
 ### Hero
 
 - [x] Navigation bar
-- [x] Hero section
-- [x] CTA buttons
-- [x] Hero illustration
+- [x] Hero section — refactored (centred composition, vertical hierarchy)
+- [x] CTA buttons — primary + secondary, centred
+- [x] Hero illustration — application preview, floating card style
+- [x] Background wave — moved to page background, independent of Hero container
+- [x] Hero refactor (hero-refactor.md) — spacing, typography, animation, wave
 
 ---
 
@@ -278,6 +280,18 @@ This document should always reflect the current state of the repository.
 
 - Implemented Hero section and layout exactly as designed with animations.
 - Refactored component architecture to move placeholders into dedicated component files.
+- **Hero visual refactor** (`hero-refactor.md`) — full implementation:
+  - Converted Hero from side-by-side layout to centred vertical composition.
+  - Added vertical rhythm: badge → 32px → heading → 28px → paragraph → 36px → buttons → 56px → preview.
+  - Heading uses Instrument Serif, font-normal, large display scale (up to 80px).
+  - Paragraph constrained to max-w-[550px], muted, Commissioner.
+  - Primary + secondary CTA buttons, centred, inline row on sm+.
+  - Application preview promoted to full-width floating card (max-w-5xl, rounded-2xl, soft blue shadow, border).
+  - Background wave extracted to `BackgroundWave` component (`/src/components/background-wave.tsx`).
+  - Wave rendered at page level in `page.tsx`, outside Hero container — never clipped by padding or max-width.
+  - Wave: slow horizontal loop (20s), low opacity (0.25), thin vertical scale (0.7), subtle blur.
+  - All entrance animations: fade upward (y: 15→0), staggered delays 0–0.4s, ease-out, ≤800ms.
+  - TypeScript: zero errors.
 
 ### Next Session
 

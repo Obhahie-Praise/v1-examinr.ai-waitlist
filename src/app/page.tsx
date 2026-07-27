@@ -5,12 +5,14 @@ import { Students } from "@/components/students/students";
 import { Institutions } from "@/components/institutions/institutions";
 import { Waitlist } from "@/components/waitlist/waitlist";
 import { Footer } from "@/components/footer/footer";
+import { BackgroundWave } from "@/components/background-wave";
 
 export default function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen relative">
+      <BackgroundWave />
       <Navbar />
-      <main className="flex-1 pt-32 p-8 flex flex-col gap-12">
+      <main className="relative z-10 flex-1 pt-32 p-8 flex flex-col gap-12">
         <Hero />
         <About />
         <Students />
