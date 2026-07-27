@@ -9,14 +9,14 @@
   --trans-bg: #FFFFFF;
 
   /* Typography */
-  --text-accent: #FFFFFF;
+  --text-accent: #FFFFFF60;
   --light-text-accent: #000000;
   --white-text: #FFFFFF;
   --light-dull-text: #616161;
   --text-highlight: #3B82F6;
 
   /* Borders */
-  --light-border: #FFFFFF;
+  --light-border: #FFFFFF10;
 
   /* Interactive */
   --dark-select: #373737;

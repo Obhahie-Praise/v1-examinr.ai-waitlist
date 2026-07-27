@@ -21,6 +21,9 @@ const instrumentSans = Instrument_Sans({
 export const metadata: Metadata = {
   title: "Examinr.ai Waitlist",
   description: "The official public waitlist for Examinr.ai",
+  icons: {
+    icon: "/favicon.svg"
+  }
 };
 
 export default function RootLayout({

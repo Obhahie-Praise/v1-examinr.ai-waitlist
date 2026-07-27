@@ -1,12 +1,10 @@
+import { Navbar } from "@/components/navigation/navbar";
+
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="p-8 border-b border-light-dull-text/20">
-        <p className="text-sm font-semibold uppercase tracking-widest text-light-dull-text">
-          Examinr.ai / Landing Page (/)
-        </p>
-      </header>
-      <main className="flex-1 p-8 flex flex-col gap-12">
+      <Navbar />
+      <main className="flex-1 pt-32 p-8 flex flex-col gap-12">
         <section>
           <h1 className="font-display text-5xl mb-4">Hero Section</h1>
           <p className="text-light-dull-text max-w-xl">Public marketing hero. (Placeholder)</p>

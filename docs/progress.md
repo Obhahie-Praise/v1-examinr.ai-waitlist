@@ -56,7 +56,7 @@ Vercel
 
 ### Hero
 
-- [x] Navigation
+- [x] Navigation bar
 - [x] Hero section
 - [x] CTA buttons
 - [x] Hero illustration
