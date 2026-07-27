@@ -82,7 +82,7 @@ export function Navbar() {
                   height={18}
                   alt="Examinr Logo"
                   className="block md:hidden"
-                />
+                />  
               </motion.span>
             </motion.div>
           </Link>
@@ -95,13 +95,13 @@ export function Navbar() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className={`${isScrolled ? "gap-3" : "gap-6"} hidden md:flex justify-center items-center w-fit absolute left-1/2 -translate-x-1/2`}
+              className={`${isScrolled ? "gap-2" : "gap-6"} hidden md:flex justify-center items-center w-fit absolute left-1/2 -translate-x-1/2`}
             >
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`${isScrolled ? "text-xs whitespace-nowrap text-nowrap" : "text-sm"} font-medium text-text-accent hover:text-text-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-text-highlight rounded-md px-2 py-1`}
+                  className={`${isScrolled ? "text-xs whitespace-nowrap text-nowrap" : "text-sm"} font-medium text-text-accent hover:text-white-text transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-text-highlight rounded-md px-2 py-1`}
                 >
                   {link.label}
                 </Link>
@@ -111,7 +111,15 @@ export function Navbar() {
 
           {/* Right Actions: CTA & Hamburger */}
           <motion.div layout className="flex items-center gap-4">
-            
+            {!isScrolled && (<div className="text-xs flex items-center gap-6">
+              <div className="w-fit h-fit flex items-center relative">
+                <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border z-[1000]"></span>
+                <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border absolute left-2.25 z-[1000]"></span>
+                <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border absolute left-4.5 z-[1000]"></span>
+              </div>
+              +231 already waiting
+            </div>)}
+
             <motion.button
               layout
               className={cn(

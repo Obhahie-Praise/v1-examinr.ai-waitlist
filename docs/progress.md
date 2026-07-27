@@ -272,8 +272,14 @@ This document should always reflect the current state of the repository.
 - Lucide React selected as the only icon library.
 - `/admin/home` simplified to just `/admin` as the dashboard route.
 
+## 2026-07-27
+
+### Completed
+
+- Implemented Hero section and layout exactly as designed with animations.
+- Refactored component architecture to move placeholders into dedicated component files.
+
 ### Next Session
 
-- Implement Hero section.
 - Configure Prisma.
 - Build waitlist submission flow.
