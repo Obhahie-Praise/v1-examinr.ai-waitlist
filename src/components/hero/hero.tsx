@@ -54,12 +54,12 @@ export function Hero() {
           }}
           initial="hidden"
           animate="visible"
-          className="flex flex-col sm:flex-row items-center text-[14px] justify-center gap-6 mb-14"
+          className="flex flex-col sm:flex-row items-center text-[14px] md:w-fit w-full justify-center md:gap-6 gap-2 mb-14"
         >
-          <button className="px-5 py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-all hover:brightness-110">
+          <button className="px-5 md:w-fit w-full py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-all hover:brightness-110">
             Join waitlist
           </button>
-          <button className="px-5 py-2.5 rounded-[10px] bg-light-border border border-light-border/20 text-white-text font-medium transition-all hover:bg-white/5">
+          <button className="px-5 md:w-fit w-full py-2.5 rounded-[10px] bg-light-border border border-light-border/20 text-white-text font-medium transition-all hover:bg-white/5">
             See the vision
           </button>
         </motion.div>
