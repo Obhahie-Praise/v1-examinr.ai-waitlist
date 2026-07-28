@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative w-full flex flex-col items-center justify-center pt-24 pb-32 z-10 text-center">
+    <section className="relative w-full flex flex-col items-center justify-center md:pt-24 pt-12 pb-32 z-10 text-center">
       <div className="container mx-auto px-6 flex flex-col items-center max-w-[1200px]">
         {/* Heading */}
         <motion.h1
@@ -20,7 +20,7 @@ export function Hero() {
           }}
           initial="hidden"
           animate="visible"
-          className="font-display font-normal text-5xl md:text-7xl lg:text-[80px] leading-[1.2] max-w-4xl mb-5 bg-linear-to-b from-[#3B82F6] to-[#9DC1FB40] bg-clip-text text-transparent"
+          className="font-display font-normal text-6xl md:text-7xl lg:text-[80px] leading-[1.2] max-w-4xl md:mb-5 mb-3 bg-linear-to-b from-[#3B82F6] to-[#9DC1FB40] bg-clip-text text-transparent"
         >
           Study with confidence
         </motion.h1>
@@ -37,7 +37,7 @@ export function Hero() {
           }}
           initial="hidden"
           animate="visible"
-          className="text-lg md:text-[16px] text-text-accent max-w-[443px] mb-5 font-primary font-medium leading-[132.2%] tracking-[-6%]"
+          className="text-lg md:text-[16px] text-text-accent max-w-[443px] md:mb-5 mb-3 font-primary font-medium leading-[132.2%] tracking-[-6%]"
         >
           The AI designed to help students prepare for exams with predictions, simulations & endless resources
         </motion.p>
@@ -76,7 +76,7 @@ export function Hero() {
             alt="Examinr.ai Application Preview"
             width={948}
             height={615}
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover rounded-2xl"
             priority
           />
           <div className="h-full absolute w-full top-0 left-0 bg-linear-to-b from-[#3B82F6] to-[#3B82F650] -z-1 blur-[200px] opacity-30" />

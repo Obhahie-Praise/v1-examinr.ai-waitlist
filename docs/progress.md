@@ -1,6 +1,6 @@
 # Progress
 
-> Last Updated: 2026-07-27
+> Last Updated: 2026-07-28
 
 This document tracks the current development progress of the Examinr.ai Waitlist.
 
@@ -302,12 +302,15 @@ This document should always reflect the current state of the repository.
 
 ### Completed
 
-- Fixed unused `BookOpen` import in `src/components/navigation/navbar.tsx` fixing `eslint` errors.
-- Added `url = env("DATABASE_URL")` to `prisma/schema.prisma` datasource block to allow successful database connections in production.
-- Installed `@prisma/client` as a direct dependency instead of devDependency.
-- Created `src/lib/prisma.ts` for Next.js App Router compatible Prisma Client singleton instantiation.
-- Verified successful production build using `pnpm run build`. Project is now ready for Vercel deployment.
+- **Prisma v7 migration** — updated `schema.prisma` to use the `prisma-client` generator with explicit `output = "../src/generated/prisma"` (required by Prisma v7).
+- **Driver adapter setup** — installed `pg`, `@prisma/adapter-pg`; created `src/lib/prisma.ts` as a singleton using `PrismaPg` pool adapter (no deprecated `url` field in schema).
+- **Dependency fixes** — installed missing `clsx` and `tailwind-merge` used by `src/lib/utils.ts`.
+- **Turbopack compatibility** — added `serverExternalPackages: ["@prisma/client", "@prisma/adapter-pg", "pg"]` to `next.config.ts` so Turbopack does not attempt to bundle the generated Prisma client (which uses `import.meta.url` / Node.js built-ins at module level).
+- **CI/Vercel readiness** — updated `build` script in `package.json` to `prisma generate && next build` so the client is always regenerated before Next.js compiles in clean environments.
+- **Import path fix** — updated `src/lib/prisma.ts` to import `PrismaClient` via the `@/generated/prisma/client` alias (resolves correctly under `bundler` moduleResolution).
+- **Stale cache fix** — removed corrupted `.next/dev/types/routes.d.ts` by clearing the `.next` directory before the final clean build.
+- **Verified** — `pnpm run build` completes successfully with zero TypeScript errors across all 5 routes.
 
 ### Next Session
 
-- Build waitlist submission flow and connect it to database.
+- Build waitlist submission flow and connect it to the database.
