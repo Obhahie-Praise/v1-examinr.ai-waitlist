@@ -39,7 +39,7 @@ export function Hero() {
           animate="visible"
           className="text-lg md:text-xl text-light-dull-text max-w-[550px] leading-relaxed mb-9 font-primary"
         >
-          The AI designed to help students prepare for exams with predictions, simulations, endless resources
+          The AI designed to help students prepare for exams with predictions, simulations & endless resources
         </motion.p>
 
         {/* Buttons */}
