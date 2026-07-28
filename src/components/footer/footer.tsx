@@ -37,7 +37,7 @@ export function Footer() {
     <footer className="w-full flex justify-center pt-12">
       <div
         ref={footerRef}
-        className="w-full max-w-full rounded-t-[60px] bg-white/[0.02] backdrop-blur-md border border-white/[0.07] px-8 py-12 md:px-15 md:py-20 flex flex-col"
+        className="w-full max-w-full rounded-t-[60px] bg-white/[0.02] backdrop-blur-md px-8 py-20 md:px-15 md:py-40 flex flex-col"
       >
         {/* Top Area: Two Columns on Desktop */}
         <div className="flex flex-col md:flex-row justify-between md:items-center items-start gap-12 md:gap-8 mb-20 md:mb-32">
