@@ -106,9 +106,20 @@ Vercel
 
 ### Institution Section
 
-- [x] Institution messaging
-- [x] Benefit cards
-- [x] Illustration
+- [x] Section layout — "Stop teaching alone." heading, left-aligned
+- [x] Section header with star decorations (independent float animations)
+- [x] Instrument Serif heading with brand blue "Stop" highlight
+- [x] Commissioner uppercase subtitle with brand blue "LEARNING ECOSYSTEM" highlight
+- [x] Three horizontally arranged feature cards (responsive: stacked on mobile/tablet, row on desktop)
+- [x] Card 1 — resource list mock (Biology, Mock Exam, Teacher Guide, Assignment with access levels)
+- [x] Card 2 — analytics bar chart mock (Most Difficult Topics: Cell Division, Genetics, Ecology)
+- [x] Card 3 — CBT exam dashboard mock (UPSS Mock CBT, Ongoing, Questions/Students/Time stats)
+- [x] Staggered scroll-reveal animations (Framer Motion, useInView, custom variant delay)
+- [x] Subtle card hover elevation (y: -4, 250ms ease-out)
+- [x] Radial glow on card hover
+- [x] Responsive layout (1-col mobile → 2-col tablet → 3-col desktop)
+- [x] prefers-reduced-motion respected on all animations
+- [x] Zero TypeScript errors, zero ESLint errors
 
 ---
 
@@ -392,6 +403,28 @@ This document should always reflect the current state of the repository.
   - Card 1: sidebar navigation mock UI with active "Resources" item and glowing search highlight pointing to "Everything you are looking for".
   - Card 2: prompt bubble ("Organisation of Life") surrounded by 6 independently floating capability pills (Analysis, Quizzes, Notes, Video tutorials, Memory tricks, Flash cards) — no synchronized movement.
   - Card 3: institution selector mock with UPSS, WAEC, Miracle centers buttons and join CTA.
+  - All animations: staggered fade-up on scroll (useInView, once), GPU-friendly (opacity + transform only), prefers-reduced-motion respected.
+  - Hover: subtle y-lift (-4px, 250ms ease-out) + radial glow + border colour transition on all cards.
+  - Animation stagger uses Framer Motion `custom` prop variant factory — no duplicate `transition` props.
+  - Build verified: `pnpm run build` → zero TypeScript errors, all 5 routes compile cleanly.
+
+### Next Session
+
+- Build waitlist submission flow and connect it to the database.
+
+## 2026-07-28 (Session 5)
+
+### Completed
+
+- **Institutions Section** (design screenshot reference) — full implementation:
+  - Replaced placeholder `Institutions` component with fully designed "Stop teaching alone." section.
+  - Section header: left-aligned, `/public/star.svg` decorative stars with independent very-slow float animations.
+  - Heading: Instrument Serif, large (up to 64px) — "Stop teaching alone." — "Stop" in brand blue.
+  - Subtitle: Commissioner, uppercase, tight tracking — "BUILD A SMARTER LEARNING ECOSYSTEM" — "LEARNING ECOSYSTEM" highlighted in brand blue.
+  - Three feature cards in a horizontal responsive grid (1-col → 2-col → 3-col).
+  - Card 1: resource list mock UI — Biology, Mock Exam, Teacher Guide, Assignment each with access level badge (Public, SSS Only, Science Dept, Private Class).
+  - Card 2: analytics bar chart mock — "Most Difficult Topics" with animated bars for Cell Division, Genetics, Ecology.
+  - Card 3: CBT exam dashboard — UPSS Mock CBT with "Ongoing" badge, Questions/Students/Time stats.
   - All animations: staggered fade-up on scroll (useInView, once), GPU-friendly (opacity + transform only), prefers-reduced-motion respected.
   - Hover: subtle y-lift (-4px, 250ms ease-out) + radial glow + border colour transition on all cards.
   - Animation stagger uses Framer Motion `custom` prop variant factory — no duplicate `transition` props.
