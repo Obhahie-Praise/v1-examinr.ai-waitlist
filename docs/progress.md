@@ -123,13 +123,23 @@ Vercel
 
 ---
 
-### Waitlist
+### Waitlist (CTA Section)
 
-- [x] Registration form
-- [x] Benefit cards
-- [x] Success modal
-- [x] Share functionality
-- [x] Secondary CTA
+- [x] Registration form — email input, submit button, client + server validation
+- [x] Benefit cards — three horizontally aligned, card 1 (early access), card 2 (feedback), card 3 (momentum)
+- [x] Success modal — scale-in animation, share + copy link actions, keyboard-dismiss (Escape)
+- [x] Share functionality — Web Share API with clipboard fallback
+- [x] Live waitlist count — fetched from database via GET /api/waitlist
+- [x] Avatar stack — five overlapping avatar initials beneath the form
+- [x] utm_source capture — read from URL query string, stored to DB on submission
+- [x] API route — POST /api/waitlist (submit entry), GET /api/waitlist (count)
+- [x] Decorative elements — star SVG headers, per-card accent decorations (accent bar, geometric shape, arc)
+- [x] Staggered scroll-reveal animations (Framer Motion, useInView, custom variant factory)
+- [x] Button interactions — whileHover + whileTap matching site-wide button language
+- [x] Input focus transitions — border + ring transition on focus
+- [x] Fully responsive — single column mobile, 2+1 tablet, 3-col desktop cards
+- [x] prefers-reduced-motion respected on all animations
+- [x] Zero TypeScript errors, zero ESLint errors
 
 ---
 
@@ -432,4 +442,32 @@ This document should always reflect the current state of the repository.
 
 ### Next Session
 
-- Build waitlist submission flow and connect it to the database.
+- Connect live database and run migrations for production deployment.
+
+## 2026-07-28 (Session 6)
+
+### Completed
+
+- **Waitlist CTA Section** (`waitlist.md` prompt) — full implementation:
+  - Replaced placeholder `Waitlist` component with fully designed CTA section.
+  - Section header: centered, `/public/star.svg` decorative stars with independent very-slow float animations.
+  - Heading: Instrument Serif, large (up to 64px) — "Ready to study differently?" — "Ready" in brand blue.
+  - Supporting paragraph: Commissioner, centered, muted white.
+  - Horizontal waitlist form: dark-surface email input with soft blue focus ring + "Join Waitlist" button (reuses exact site-wide button gradient + whileHover/whileTap interactions).
+  - Client-side + server-side email validation with clear error messages.
+  - utm_source capture from URL query string — saved to DB on submission, stored NULL when absent.
+  - Supporting info: "Early beta opens..." notice + overlapping avatar stack + live waitlist count fetched from DB.
+  - Success modal: scale-in AnimatePresence animation, CheckCircle icon, share (Web Share API) + copy-link (Clipboard API fallback) actions, Escape key dismiss, backdrop click dismiss.
+  - Three benefit cards in responsive grid (1-col → 2+1 tablet → 3-col desktop).
+  - Card 1 (Early access): left-edge blue gradient accent bar.
+  - Card 2 (Your feedback): floating blue outer ring + rotating inner diamond + satellite dot decoration.
+  - Card 3 (Every signup): animated arc / partial-ring SVG positioned lower-right.
+  - API route (`/api/waitlist`) — POST (upsert entry + utm_source) + GET (live count).
+  - All animations: staggered fade-up on scroll (useInView, once), GPU-friendly, prefers-reduced-motion respected.
+  - Hover: subtle y-lift (-4px, 250ms ease-out) + radial glow + border colour transition on all cards.
+  - Build verified: `pnpm run build` → zero TypeScript errors, all routes compile cleanly.
+
+### Next Session
+
+- Run Prisma migration and connect to production Neon database.
+- Deploy to Vercel.
