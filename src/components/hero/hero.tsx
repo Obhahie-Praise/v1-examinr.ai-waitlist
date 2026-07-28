@@ -20,7 +20,7 @@ export function Hero() {
           }}
           initial="hidden"
           animate="visible"
-          className="font-display font-normal text-5xl md:text-7xl lg:text-[80px] leading-[1.2] text-text-accent max-w-4xl mb-7"
+          className="font-display font-normal text-5xl md:text-7xl lg:text-[80px] leading-[1.2] max-w-4xl mb-5 bg-linear-to-b from-[#3B82F6] to-[#9DC1FB40] bg-clip-text text-transparent"
         >
           Study with confidence
         </motion.h1>
@@ -37,7 +37,7 @@ export function Hero() {
           }}
           initial="hidden"
           animate="visible"
-          className="text-lg md:text-xl text-light-dull-text max-w-[550px] leading-relaxed mb-9 font-primary"
+          className="text-lg md:text-[16px] text-text-accent max-w-[443px] mb-5 font-primary font-medium leading-[132.2%] tracking-[-6%]"
         >
           The AI designed to help students prepare for exams with predictions, simulations & endless resources
         </motion.p>
@@ -54,7 +54,7 @@ export function Hero() {
           }}
           initial="hidden"
           animate="visible"
-          className="flex flex-col sm:flex-row items-center text-[14px] justify-center gap-4 mb-14"
+          className="flex flex-col sm:flex-row items-center text-[14px] justify-center gap-6 mb-14"
         >
           <button className="px-5 py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-all hover:brightness-110">
             Join waitlist
@@ -69,16 +69,17 @@ export function Hero() {
           initial={{ opacity: 0, y: 25, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="relative w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl shadow-[#3B82F6]/10 border border-light-border/10"
+          className="relative w-full max-w-5xl rounded-2xl border border-light-border"
         >
           <Image
             src="/hero.svg"
             alt="Examinr.ai Application Preview"
-            width={1280}
-            height={832}
+            width={948}
+            height={615}
             className="w-full h-auto object-cover"
             priority
           />
+          <div className="h-full absolute w-full top-0 left-0 bg-linear-to-b from-[#3B82F6] to-[#3B82F650] -z-1 blur-[200px] opacity-30" />
         </motion.div>
       </div>
     </section>
