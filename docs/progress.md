@@ -297,3 +297,17 @@ This document should always reflect the current state of the repository.
 
 - Configure Prisma.
 - Build waitlist submission flow.
+
+## 2026-07-28
+
+### Completed
+
+- Fixed unused `BookOpen` import in `src/components/navigation/navbar.tsx` fixing `eslint` errors.
+- Added `url = env("DATABASE_URL")` to `prisma/schema.prisma` datasource block to allow successful database connections in production.
+- Installed `@prisma/client` as a direct dependency instead of devDependency.
+- Created `src/lib/prisma.ts` for Next.js App Router compatible Prisma Client singleton instantiation.
+- Verified successful production build using `pnpm run build`. Project is now ready for Vercel deployment.
+
+### Next Session
+
+- Build waitlist submission flow and connect it to database.

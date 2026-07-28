@@ -8,7 +8,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import Link from "next/link";
-import { Menu, X, BookOpen } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -124,7 +124,7 @@ export function Navbar() {
               layout
               className={cn(
                 "hidden md:inline-flex items-center justify-center rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-all hover:bg-text-highlight/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-app-bg focus-visible:ring-text-highlight active:scale-95",
-                isScrolled ? "px-5 py-2 text-xs" : "px-6 py-2.5 text-sm",
+                isScrolled ? "px-5 py-2 text-xs" : "px-4 py-2.5 text-sm",
               )}
             >
               Join waitlist
