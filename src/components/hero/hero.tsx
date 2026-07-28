@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+
+// Shared press interaction — matches the navbar CTA for consistent interaction language.
+const BUTTON_TRANSITION = { duration: 0.15, ease: "easeOut" } as const;
 
 export function Hero() {
   return (
@@ -39,7 +41,7 @@ export function Hero() {
           animate="visible"
           className="text-lg md:text-[16px] text-text-accent max-w-[443px] md:mb-5 mb-3 font-primary font-medium leading-[132.2%] tracking-[-6%]"
         >
-          The AI designed to help students prepare for exams with predictions, simulations & endless resources
+          The AI designed to help students prepare for exams with predictions, simulations &amp; endless resources
         </motion.p>
 
         {/* Buttons */}
@@ -56,12 +58,29 @@ export function Hero() {
           animate="visible"
           className="flex flex-col sm:flex-row items-center text-[14px] md:w-fit w-full justify-center md:gap-6 gap-2 mb-14"
         >
-          <button className="px-5 md:w-fit w-full py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-all hover:brightness-110">
+          {/*
+           * Primary CTA — whileHover lifts slightly, whileTap presses down with
+           * shadow removal to reinforce the physical "press" metaphor.
+           * Scale values are intentionally conservative (1.03 / 0.96) — premium, not playful.
+           */}
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.96, boxShadow: "none" }}
+            transition={BUTTON_TRANSITION}
+            className="px-5 md:w-fit w-full py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-colors hover:brightness-110 will-change-transform"
+          >
             Join waitlist
-          </button>
-          <button className="px-5 md:w-fit w-full py-2.5 rounded-[10px] bg-light-border border border-light-border/20 text-white-text font-medium transition-all hover:bg-white/5">
+          </motion.button>
+
+          {/* Secondary CTA — same interaction language, same timing. */}
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.96 }}
+            transition={BUTTON_TRANSITION}
+            className="px-5 md:w-fit w-full py-2.5 rounded-[10px] bg-light-border border border-light-border/20 text-white-text font-medium transition-colors hover:bg-white/5 will-change-transform"
+          >
             See the vision
-          </button>
+          </motion.button>
         </motion.div>
 
         {/* Application Preview */}

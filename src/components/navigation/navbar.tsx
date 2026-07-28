@@ -20,6 +20,9 @@ const NAV_LINKS = [
   { label: "Research", href: "/research" },
 ];
 
+// Shared press interaction for all CTA buttons — consistent across the page.
+const BUTTON_TRANSITION = { duration: 0.15, ease: "easeOut" } as const;
+
 export function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,22 +37,21 @@ export function Navbar() {
       <div
         className={`fixed top-0 left-0 w-full z-50 flex justify-center pointer-events-none`}
       >
+        {/*
+         * Entrance animation uses a fast tween (ease-out, 250ms) instead of a spring.
+         * This avoids overshoot and keeps the motion GPU-friendly (opacity + translateY only).
+         * The `layout` prop is intentionally omitted from inner wrappers to prevent
+         * unnecessary layout recalculation on every scroll-triggered class swap.
+         */}
         <motion.nav
-          layout
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{
-            type: "spring",
-            stiffness: 400,
-            damping: 30,
-            mass: 0.8,
-            opacity: { duration: 0.25 },
-          }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
           className={cn(
-            "pointer-events-auto flex items-center justify-between",
+            "pointer-events-auto will-change-transform flex items-center justify-between",
             isScrolled
-              ? "mt-6 px-6 py-2.5 w-full md:mx-0 mx-4 max-w-2xl rounded-full bg-app-bg/70 backdrop-blur-sm border border-light-border shadow-lg shadow-black/20"
-              : "w-full max-w-[1440px] px-6 md:px-[130px] py-[40px] bg-transparent border-transparent",
+              ? "mt-6 px-6 py-2.5 w-full md:mx-0 mx-4 max-w-2xl rounded-full bg-app-bg/70 backdrop-blur-sm border border-light-border shadow-lg shadow-black/20 transition-all duration-200 ease-out"
+              : "w-full max-w-[1440px] px-6 md:px-[130px] py-[40px] bg-transparent border-transparent transition-all duration-200 ease-out",
           )}
         >
           {/* Logo */}
@@ -57,11 +59,10 @@ export function Navbar() {
             href="/"
             className="flex items-center shrink-0 gap-2 text-text-highlight focus:outline-none focus-visible:ring-2 focus-visible:ring-text-highlight rounded-md"
           >
-            <motion.div layout className="flex items-center gap-2">
-              <motion.span
-                layout
+            <div className="flex items-center gap-2">
+              <span
                 className={cn(
-                  "font-semibold tracking-tight transition-all",
+                  "font-semibold tracking-tight transition-all duration-200 ease-out",
                   isScrolled ? "text-lg" : "text-xl",
                 )}
               >
@@ -82,48 +83,50 @@ export function Navbar() {
                   height={18}
                   alt="Examinr Logo"
                   className="block md:hidden"
-                />  
-              </motion.span>
-            </motion.div>
+                />
+              </span>
+            </div>
           </Link>
 
-          {/* Desktop Links - shrink on Scroll */}
-          <AnimatePresence>
-            <motion.div
-              layout
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              className={`${isScrolled ? "gap-2" : "gap-6"} hidden md:flex justify-center items-center w-fit absolute left-1/2 -translate-x-1/2`}
-            >
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className={`${isScrolled ? "text-xs whitespace-nowrap text-nowrap" : "text-sm"} font-medium text-text-accent hover:text-white-text transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-text-highlight rounded-md px-2 py-1`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+          {/* Desktop Links */}
+          <div
+            className={`${isScrolled ? "gap-2" : "gap-6"} hidden md:flex justify-center items-center w-fit absolute left-1/2 -translate-x-1/2 transition-all duration-200 ease-out`}
+          >
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`${isScrolled ? "text-xs whitespace-nowrap text-nowrap" : "text-sm"} font-medium text-text-accent hover:text-white-text transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-text-highlight rounded-md px-2 py-1`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
 
           {/* Right Actions: CTA & Hamburger */}
-          <motion.div layout className="flex items-center gap-4">
-            {!isScrolled && (<div className="text-xs hidden md:flex items-center gap-6">
-              <div className="w-fit h-fit flex items-center relative">
-                <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border z-[1000]"></span>
-                <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border absolute left-2.25 z-[1000]"></span>
-                <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border absolute left-4.5 z-[1000]"></span>
+          <div className="flex items-center gap-4">
+            {!isScrolled && (
+              <div className="text-xs hidden md:flex items-center gap-6">
+                <div className="w-fit h-fit flex items-center relative">
+                  <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border z-[1000]"></span>
+                  <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border absolute left-2.25 z-[1000]"></span>
+                  <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border absolute left-4.5 z-[1000]"></span>
+                </div>
+                +231 already waiting
               </div>
-              +231 already waiting
-            </div>)}
+            )}
 
+            {/*
+             * CTA button uses whileHover + whileTap for consistent press feedback.
+             * Scale slightly up on hover, scale down on press — premium tactile feel.
+             * Shadow reduction on press reinforces the "pressed" physical metaphor.
+             */}
             <motion.button
-              layout
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.96, boxShadow: "none" }}
+              transition={BUTTON_TRANSITION}
               className={cn(
-                "hidden md:inline-flex items-center justify-center rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-all hover:bg-text-highlight/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-app-bg focus-visible:ring-text-highlight active:scale-95",
+                "hidden md:inline-flex items-center justify-center rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-colors hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-app-bg focus-visible:ring-text-highlight will-change-transform",
                 isScrolled ? "px-4.5 py-2 text-xs" : "px-4 py-2.5 text-sm",
               )}
             >
@@ -132,14 +135,15 @@ export function Navbar() {
 
             {/* Mobile Menu Toggle */}
             <motion.button
-              layout
+              whileTap={{ scale: 0.92 }}
+              transition={BUTTON_TRANSITION}
               onClick={() => setMobileMenuOpen(true)}
               className="md:hidden p-2 text-text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-text-highlight rounded-md"
               aria-label="Open mobile menu"
             >
               <Menu className="w-6 h-6" />
             </motion.button>
-          </motion.div>
+          </div>
         </motion.nav>
       </div>
 
@@ -147,10 +151,10 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             className="fixed inset-0 z-[100] h-screen bg-app-bg flex flex-col p-6"
           >
             <div className="flex items-center justify-between mb-12">
@@ -187,9 +191,13 @@ export function Navbar() {
                 </Link>
               ))}
               <div className="mt-8 pt-8 border-t border-light-dull-text/20">
-                <button className="w-full py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium text-lg transition-all hover:bg-text-highlight/90 active:scale-95">
+                <motion.button
+                  whileTap={{ scale: 0.96, boxShadow: "none" }}
+                  transition={BUTTON_TRANSITION}
+                  className="w-full py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium text-lg transition-colors hover:brightness-110 will-change-transform"
+                >
                   Join the Waitlist
-                </button>
+                </motion.button>
               </div>
             </nav>
           </motion.div>

@@ -62,14 +62,25 @@ Vercel
 - [x] Hero illustration — application preview, floating card style
 - [x] Background wave — moved to page background, independent of Hero container
 - [x] Hero refactor (hero-refactor.md) — spacing, typography, animation, wave
+- [x] Animation refactor (animations-refactor.md) — button press feedback, navbar collapse performance
 
 ---
 
 ### About
 
-- [x] About section
-- [x] Typography layout
-- [x] Product positioning
+- [x] About section — full implementation (about.md prompt)
+- [x] Section header with star decorations
+- [x] Instrument Serif heading with blue highlight
+- [x] Commissioner uppercase subtitle with blue highlight
+- [x] Responsive two-column card grid (large left + right column)
+- [x] Card 1 — blue theme, floating pills, glass style
+- [x] Card 2 — purple theme, floating pills, glass style
+- [x] Card 3 — green accent, scribble underline on "content"
+- [x] Staggered scroll-reveal animations (Framer Motion, useInView)
+- [x] Independent floating pill animations (different timing + delay)
+- [x] Subtle hover glow states on all cards
+- [x] Responsive layout (mobile stack → desktop two-column)
+- [x] Background wave refactor — opacity 0.35, 15s cycle, ±3% travel
 
 ---
 
@@ -310,6 +321,47 @@ This document should always reflect the current state of the repository.
 - **Import path fix** — updated `src/lib/prisma.ts` to import `PrismaClient` via the `@/generated/prisma/client` alias (resolves correctly under `bundler` moduleResolution).
 - **Stale cache fix** — removed corrupted `.next/dev/types/routes.d.ts` by clearing the `.next` directory before the final clean build.
 - **Verified** — `pnpm run build` completes successfully with zero TypeScript errors across all 5 routes.
+
+### Next Session
+
+- Build waitlist submission flow and connect it to the database.
+
+## 2026-07-28 (Session 2)
+
+### Completed
+
+- **About Section** (`about.md` prompt) — full implementation:
+  - Replaced placeholder `About` component with a fully designed section.
+  - Section header: `/public/star.svg` decorative stars with very slow independent float animations.
+  - Heading: Instrument Serif, large — "Building the future of confident learning." — "Building" in brand blue.
+  - Subtitle: Commissioner, uppercase, tight tracking — "STUDY WITH AI WITH PREDICTIVE INTELLIGENCE" — "PREDICTIVE INTELLIGENCE" highlighted in brand blue.
+  - Responsive card grid: large left card + right column (top + bottom) on desktop; stacked vertically on mobile.
+  - Card 1 (blue): reactive→predictive copy + 5 independently floating blue glass pills.
+  - Card 2 (purple): Stop searching/Start preparing copy + 4 independently floating purple glass pills.
+  - Card 3 (green): "content" word highlighted green with SVG scribble underline.
+  - All animations: staggered fade-up on scroll (useInView, once), GPU-friendly (opacity + transform only), prefers-reduced-motion respected.
+  - Hover: subtle radial glow + border colour transition on all cards.
+- **Background Wave refactor** — opacity 0.25 → 0.35, duration 20s → 15s, travel ±2% → ±3%, scale-y 0.7 → 0.75.
+
+### Next Session
+
+- Build waitlist submission flow and connect it to the database.
+
+## 2026-07-28 (Session 3)
+
+### Completed
+
+- **Animation Refactor** (`animations-refactor.md`) — pure interaction polish pass:
+  - **Navbar collapse performance** — replaced `type: "spring"` with `ease-out` tween (250ms); removed `layout` prop from all inner wrappers to eliminate continuous layout recalculation on scroll; class swaps for collapsed state now handled purely via Tailwind with CSS `transition-all duration-200 ease-out`, keeping all transitions on GPU-composited properties (opacity, transform).
+  - **Navbar CTA button** — added `whileHover={{ scale: 1.03 }}` + `whileTap={{ scale: 0.96, boxShadow: "none" }}` with 150ms ease-out transition for tactile press feedback.
+  - **Mobile menu button** — added `whileTap={{ scale: 0.92 }}` for consistent icon button press response.
+  - **Mobile menu overlay** — entrance/exit animation tightened: `y: -20 → y: -16`, `duration: 0.2` ease-out (was easeInOut).
+  - **Hero primary CTA** — converted from `<button>` to `<motion.button>` with `whileHover={{ scale: 1.03 }}` + `whileTap={{ scale: 0.96, boxShadow: "none" }}`.
+  - **Hero secondary CTA** — same interaction language as primary; `whileHover={{ scale: 1.03 }}` + `whileTap={{ scale: 0.96 }}`.
+  - All press interactions share a single `BUTTON_TRANSITION` constant (`{ duration: 0.15, ease: "easeOut" }`) for consistency.
+  - `will-change-transform` applied to all animated buttons to promote GPU layers.
+  - Zero layout or styling changes made.
+  - Build verified: `pnpm run build` → zero TypeScript errors, all 5 routes compile cleanly.
 
 ### Next Session
 
