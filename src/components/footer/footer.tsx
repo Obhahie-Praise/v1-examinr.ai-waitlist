@@ -20,7 +20,11 @@ const FADE_UP: Variants = {
 const SOCIAL_LINKS = [
   { label: "GITHUB", href: "https://github.com", aria: "Visit GitHub profile" },
   { label: "EMAIL", href: "mailto:hello@examinr.ai", aria: "Send an email" },
-  { label: "X (Twitter)", href: "https://x.com", aria: "Visit X (Twitter) profile" },
+  {
+    label: "X (Twitter)",
+    href: "https://x.com",
+    aria: "Visit X (Twitter) profile",
+  },
   { label: "TIKTOK", href: "https://tiktok.com", aria: "Visit TikTok profile" },
   { label: "WHATSAPP", href: "https://whatsapp.com", aria: "Chat on WhatsApp" },
 ];
@@ -30,21 +34,21 @@ export function Footer() {
   const isInView = useInView(footerRef, { once: true, margin: "-50px" });
 
   return (
-    <footer className="w-full flex justify-center px-6 pb-6 pt-12 md:pb-12 md:pt-16">
+    <footer className="w-full flex justify-center pt-12">
       <div
         ref={footerRef}
-        className="w-full max-w-[1200px] rounded-[36px] bg-[#0D1929]/80 backdrop-blur-md border border-white/[0.07] px-8 py-12 md:px-16 md:py-20 flex flex-col"
+        className="w-full max-w-full rounded-t-[60px] bg-white/[0.02] backdrop-blur-md border border-white/[0.07] px-8 py-12 md:px-15 md:py-20 flex flex-col"
       >
         {/* Top Area: Two Columns on Desktop */}
-        <div className="flex flex-col md:flex-row justify-between gap-12 md:gap-8 mb-20 md:mb-32">
+        <div className="flex flex-col md:flex-row justify-between md:items-center items-start gap-12 md:gap-8 mb-20 md:mb-32">
           {/* Left Column */}
-          <div className="flex flex-col items-start text-left md:max-w-md">
+          <div className="flex flex-col items-start text-left gap-1 md:max-w-[593px]">
             <motion.p
               custom={0.1}
               variants={FADE_UP}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="font-primary text-sm font-medium text-white-text/70 mb-6"
+              className="font-primary md:text-[16px] text-sm font-medium text-white-text/80"
             >
               Built by a student. For students.
             </motion.p>
@@ -53,10 +57,10 @@ export function Footer() {
               variants={FADE_UP}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="font-primary text-4xl md:text-5xl font-light text-white-text leading-tight mb-6"
+              className="font-primary text-[55px] md:text-[96px] font-medium text-white-text leading-tight"
             >
               Hi, I&apos;m{" "}
-              <span className="font-display italic text-5xl md:text-6xl text-white-text inline-block transform translate-y-1">
+              <span className="font-display italic text-[55px] md:text-[96px] text-white-text inline-block transform translate-y-1">
                 Praise.
               </span>
             </motion.h2>
@@ -65,20 +69,20 @@ export function Footer() {
               variants={FADE_UP}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="font-primary text-sm text-white-text/40"
+              className="font-display italic md:text-[20px] text-base text-text-accent tracking-[6%]"
             >
               Built with ☕ and too many late nights.
             </motion.p>
           </div>
 
           {/* Right Column */}
-          <div className="flex flex-col items-start md:items-end text-left md:text-right md:max-w-md gap-4">
+          <div className="flex flex-col items-start md:items-end text-left md:text-right md:max-w-[594px] gap-4">
             <motion.p
               custom={0.4}
               variants={FADE_UP}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="font-primary text-[15px] md:text-base leading-relaxed text-white-text/60"
+              className="font-primary text-[16px] md:text-base leading-[114%] tracking-normal md:tracking-[-3%] text-white-text"
             >
               I&apos;m a student who got tired of preparing for exams with
               scattered notes, unpredictable questions, and AI that doesn&apos;t
@@ -89,7 +93,7 @@ export function Footer() {
               variants={FADE_UP}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="font-primary text-[15px] md:text-base leading-relaxed text-white-text/60"
+              className="font-primary text-[16px] md:text-base leading-relaxed text-white-text tracking-normal md:tracking-[-3%]"
             >
               So I&apos;m building the platform I wish I had.
             </motion.p>
@@ -98,7 +102,7 @@ export function Footer() {
               variants={FADE_UP}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="font-primary text-[15px] md:text-base leading-relaxed text-white-text/60"
+              className="font-primary text-[15px] md:text-base leading-relaxed text-white-text tracking-normal md:tracking-[-3%]"
             >
               If Examinr.ai sounds like something you&apos;d use, I&apos;d love
               to hear from you.
@@ -112,12 +116,12 @@ export function Footer() {
           variants={FADE_UP}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="flex items-center gap-4 w-full mb-8"
+          className="flex items-center gap-4 w-full mb-4.5"
         >
           <span className="font-display italic text-2xl text-white-text whitespace-nowrap">
             Let&apos;s connect.
           </span>
-          <div className="flex-1 h-[1px] bg-white/[0.08]" />
+          <div className="w-[149.16px] h-[1px] bg-text-accent" />
         </motion.div>
 
         {/* Bottom Area: Socials and Copyright */}
@@ -137,7 +141,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={link.aria}
-                className="group relative font-primary text-xs md:text-sm font-medium text-white-text/50 transition-colors duration-300 hover:text-[#3B82F6] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded-sm inline-block"
+                className="group font-display relative text-xs md:text-[22px] font-medium text-white-text transition-colors duration-300 hover:text-white/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded-sm inline-block"
               >
                 <motion.span
                   className="inline-block"
@@ -160,10 +164,10 @@ export function Footer() {
             animate={isInView ? "visible" : "hidden"}
             className="flex flex-col items-start md:items-end text-left md:text-right gap-1"
           >
-            <span className="font-primary text-xs md:text-sm font-medium text-white-text/40">
+            <span className="font-display text-[16px] font-medium text-white-text/80">
               &copy; 2026 Examinr.ai
             </span>
-            <span className="font-primary text-[10px] md:text-xs text-white-text/30">
+            <span className="font-display text-[16px] text-white-text/80">
               Designed &amp; developed by Praise.
             </span>
           </motion.div>
