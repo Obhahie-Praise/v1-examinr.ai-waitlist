@@ -223,7 +223,7 @@ export function Institutions() {
     <section
       id="for-institutions"
       ref={sectionRef}
-      className="relative w-full max-w-[1200px] mx-auto px-6 py-24 md:py-32 flex flex-col items-start"
+      className="relative w-full max-w-[1120px] mx-auto px-6 py-24 md:py-32 flex flex-col items-start"
     >
       {/* ── Section Header ── */}
       <div className="relative flex flex-col items-start text-left mb-16 md:mb-20 w-full">

@@ -112,7 +112,12 @@ function FeedbackDecoration() {
       <motion.div
         className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#3B82F6]/40"
         animate={shouldReduceMotion ? {} : { scale: [1, 1.3, 1] }}
-        transition={{ duration: 6, ease: "easeInOut", repeat: Infinity, delay: 1.5 }}
+        transition={{
+          duration: 6,
+          ease: "easeInOut",
+          repeat: Infinity,
+          delay: 1.5,
+        }}
       />
     </div>
   );
@@ -168,13 +173,7 @@ function MomentumDecoration() {
 
 // Five small overlapping avatar initials — purely decorative.
 const AVATAR_INITIALS = ["AK", "MO", "ES", "JP", "RC"];
-const AVATAR_COLORS = [
-  "#1D4ED8",
-  "#2563EB",
-  "#3B82F6",
-  "#60A5FA",
-  "#93C5FD",
-];
+const AVATAR_COLORS = ["#1D4ED8", "#2563EB", "#3B82F6", "#60A5FA", "#93C5FD"];
 
 function AvatarStack() {
   return (
@@ -202,7 +201,9 @@ interface SuccessModalProps {
 function SuccessModal({ open, onClose }: SuccessModalProps) {
   const [copied, setCopied] = useState(false);
   const shareUrl =
-    typeof window !== "undefined" ? window.location.origin : "https://examinr.ai";
+    typeof window !== "undefined"
+      ? window.location.origin
+      : "https://examinr.ai";
 
   const handleCopy = useCallback(async () => {
     try {
@@ -298,7 +299,9 @@ function SuccessModal({ open, onClose }: SuccessModalProps) {
 
               {/* Supporting text */}
               <p className="font-primary text-sm md:text-[15px] leading-relaxed text-white-text/50 max-w-[300px] mb-8">
-                {"We'll reach out when early access opens. In the meantime, help us grow the waitlist."}
+                {
+                  "We'll reach out when early access opens. In the meantime, help us grow the waitlist."
+                }
               </p>
 
               {/* Share + Copy actions */}
@@ -385,7 +388,10 @@ export function Waitlist() {
           body: JSON.stringify({ email: email.trim(), utmSource }),
         });
 
-        const data = (await response.json()) as { success?: boolean; error?: string };
+        const data = (await response.json()) as {
+          success?: boolean;
+          error?: string;
+        };
 
         if (!response.ok || !data.success) {
           setError(data.error ?? "Something went wrong. Please try again.");
@@ -440,16 +446,21 @@ export function Waitlist() {
       <section
         id="waitlist"
         ref={sectionRef}
-        className="relative w-full max-w-[1200px] mx-auto px-6 pt-32 md:pt-48 pb-24 md:pb-32 flex flex-col items-center"
+        className="relative w-full max-w-[1350px] mx-auto px-6 pt-32 md:pt-48 pb-24 md:pb-32 flex flex-col items-center"
       >
         {/* ── Section Header ── */}
-        <div className="relative flex flex-col items-center text-center mb-10 md:mb-14">
+        <div className="relative flex flex-col items-center text-center mb-10 md:mb-[32px]">
           {/* Decorative stars */}
-          <DecorativeStar size={22} style={{ top: "-14px", left: "-40px" }}  delay={0}   />
-          <DecorativeStar size={14} style={{ top: "-4px",  left: "-76px" }}  delay={3.5} />
-          <DecorativeStar size={18} style={{ top: "18px",  right: "-44px" }} delay={1.8} />
-          <DecorativeStar size={11} style={{ top: "-8px",  right: "-78px" }} delay={4.3} />
-          <DecorativeStar size={9}  style={{ bottom: "4px",left: "-56px" }} delay={2.6} />
+          <DecorativeStar
+            size={68.83}
+            style={{ top: "10px", left: "31px" }}
+            delay={0}
+          />
+          <DecorativeStar
+            size={45.63}
+            style={{ top: "-6px", left: "490px" }}
+            delay={3.5}
+          />
 
           {/* Heading */}
           <motion.h2
@@ -468,7 +479,7 @@ export function Waitlist() {
             variants={FADE_UP}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="mt-5 font-primary text-base md:text-[17px] text-white-text/55 max-w-[540px] leading-relaxed"
+            className="mt-[32px] font-primary text-base md:text-[16px] text-text-accent max-w-[549px] leading-relaxed"
           >
             Be among the first students and institutions shaping the future of
             predictive learning.
@@ -486,7 +497,7 @@ export function Waitlist() {
           <form
             onSubmit={handleSubmit}
             noValidate
-            className="flex flex-col sm:flex-row items-stretch gap-3 w-full"
+            className="flex flex-col sm:flex-row items-stretch gap-3 w-full rounded-[10px] bg-[#1E4F9F]/10 border-[0.5px] border-white/[0.09] text-white-text text-[14px]  focus:border-[#3B82F6]/50 focus:ring-1 focus:ring-[#3B82F6]/30 transition-all duration-200 ease-out"
           >
             {/* Email input */}
             <input
@@ -502,7 +513,7 @@ export function Waitlist() {
               autoComplete="email"
               aria-label="Your email address"
               aria-describedby={error ? "waitlist-error" : undefined}
-              className="flex-1 px-4 py-2.5 rounded-[10px] bg-[#0D1929]/80 border border-white/[0.09] text-white-text text-sm font-primary placeholder:text-white/30 focus:outline-none focus:border-[#3B82F6]/50 focus:ring-1 focus:ring-[#3B82F6]/30 transition-all duration-200 ease-out"
+              className="flex-1 px-5 sm:py-0 py-2.5 font-primary placeholder:text-white/30 focus:outline-none"
             />
 
             {/* Submit button — matches the exact button style used site-wide. */}
@@ -512,9 +523,9 @@ export function Waitlist() {
               whileHover={isSubmitting ? {} : { scale: 1.03 }}
               whileTap={isSubmitting ? {} : { scale: 0.96, boxShadow: "none" }}
               transition={BUTTON_TRANSITION}
-              className="sm:w-fit w-full px-5 py-2.5 rounded-[10px] bg-gradient-to-b from-[#3B82F6] to-[#052353] text-white text-sm font-medium transition-colors hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed will-change-transform whitespace-nowrap"
+              className="sm:w-fit w-full px-5 py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white text-[14px] font-medium transition-colors hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed will-change-transform whitespace-nowrap"
             >
-              {isSubmitting ? "Joining..." : "Join Waitlist"}
+              {isSubmitting ? "Joining..." : "Join waitlist"}
             </motion.button>
           </form>
 
@@ -538,9 +549,9 @@ export function Waitlist() {
           variants={FADE_UP}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="mt-5 flex flex-col items-center gap-3 text-center"
+          className="mt-2 flex flex-col items-center gap-2 text-center"
         >
-          <p className="text-xs font-primary text-white/40">
+          <p className="text-xs font-primary text-white/80">
             Early beta opens to the first wave of waitlist members!
           </p>
 
@@ -548,13 +559,13 @@ export function Waitlist() {
           <div className="flex items-center gap-3">
             <AvatarStack />
             <span className="text-sm font-primary font-medium text-white/60">
-              {displayCount}+ already waiting
+              {displayCount + 231}+ already waiting
             </span>
           </div>
         </motion.div>
 
         {/* ── Benefit Cards ── */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mt-16 md:mt-20">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-16 md:mt-20">
           {benefitCards.map((card) => (
             <motion.div
               key={card.title}
@@ -562,8 +573,11 @@ export function Waitlist() {
               variants={FADE_UP}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              whileHover={{ y: -4, transition: { duration: 0.25, ease: "easeOut" } }}
-              className="relative rounded-[30px] border border-white/[0.07] bg-[#0D1929]/80 backdrop-blur-md overflow-hidden p-7 md:p-8 flex flex-col gap-4 group transition-all duration-300 hover:border-[#3B82F6]/20 will-change-transform"
+              whileHover={{
+                y: -4,
+                transition: { duration: 0.25, ease: "easeOut" },
+              }}
+              className="relative rounded-[30px] border border-light-border bg-white/3 backdrop-blur-md overflow-hidden p-7 md:p-6 flex flex-col gap-2.5 group transition-all duration-300 hover:border-[#3B82F6]/20 will-change-transform"
             >
               {/* Radial glow on hover */}
               <div
@@ -574,22 +588,28 @@ export function Waitlist() {
                 }}
               />
 
-              {/* Per-card decorative accent */}
-              {card.decoration}
+              {/* Decorative accents */}
+              {card.title === "Early access." ? (
+                <Image src="/early_access.svg" alt="" width={120} height={120} className="absolute top-0 left-0 opacity-10" />
+              ) : card.title === "Your feedback" ? (
+                <Image src="/feedback.svg" alt="" width={120} height={120} className="absolute left-[99.54px] top-[17.54px] opacity-10" />
+              ) : (
+                <Image src="/momentum.svg" alt="" width={120} height={120} className="absolute left-[242px] bottom-0 opacity-10" />
+              )}
 
               {/* Text */}
               <div className="relative z-10 flex flex-col gap-1.5">
-                <h3 className="font-display font-normal text-2xl md:text-[26px] leading-[1.25] text-white-text">
+                <h3 className="font-primary font-medium text-2xl md:text-[24px] leading-[1.25] text-white-text">
                   {card.title}
                 </h3>
                 {card.titleContinuation && (
-                  <p className="font-primary font-medium text-base text-[#3B82F6]">
+                  <p className="font-primary font-medium text-[15px] text-white-text">
                     {card.titleContinuation}
                   </p>
                 )}
               </div>
 
-              <p className="relative z-10 font-primary text-sm md:text-[15px] leading-relaxed text-white-text/50 mt-auto">
+              <p className="relative z-10 font-primary text-sm md:text-[14px] leading-relaxed text-text-accent">
                 {card.body}
               </p>
             </motion.div>

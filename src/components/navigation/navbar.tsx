@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   motion,
   useScroll,
@@ -27,6 +27,16 @@ export function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch("/api/waitlist")
+      .then((res) => res.json() as Promise<{ count: number }>)
+      .then((data) => setWaitlistCount(data.count))
+      .catch(() => setWaitlistCount(0));
+  }, []);
+
+  const displayCount = waitlistCount !== null ? waitlistCount : 231;
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
@@ -112,7 +122,7 @@ export function Navbar() {
                   <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border absolute left-2.25 z-[1000]"></span>
                   <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border absolute left-4.5 z-[1000]"></span>
                 </div>
-                +231 already waiting
+                {displayCount + 231}+ already waiting
               </div>
             )}
 

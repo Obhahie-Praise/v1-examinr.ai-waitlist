@@ -125,7 +125,7 @@ export function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative w-full max-w-[1200px] mx-auto px-6 py-24 md:py-32 flex flex-col items-center"
+      className="relative w-full max-w-[1120px] mx-auto px-6 py-24 md:py-32 flex flex-col items-center"
     >
       {/* ── Section Header ── */}
       <div className="relative flex flex-col items-center text-center mb-16 md:mb-20">

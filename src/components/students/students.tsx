@@ -258,7 +258,7 @@ export function Students() {
     <section
       id="for-students"
       ref={sectionRef}
-      className="relative w-full max-w-[1200px] mx-auto px-6 py-24 md:py-32 flex flex-col items-end"
+      className="relative w-full max-w-[1120px] mx-auto px-6 py-24 md:py-32 flex flex-col items-end"
     >
       {/* ── Section Header ── */}
       <div className="relative flex flex-col items-end text-right mb-16 md:mb-20 w-full">
