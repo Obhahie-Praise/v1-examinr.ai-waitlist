@@ -86,9 +86,21 @@ Vercel
 
 ### Student Section
 
-- [x] Section layout
-- [x] AI Workspace preview
-- [x] Benefit cards
+- [x] Section layout — "Stop studying harder." heading, right-aligned
+- [x] Section header with star decorations (independent float animations)
+- [x] Instrument Serif heading with brand blue "Stop" highlight
+- [x] Commissioner uppercase subtitle with brand blue "STUDYING SMARTER" highlight
+- [x] Three horizontally arranged feature cards (responsive: stacked on mobile/tablet, row on desktop)
+- [x] Card 1 — sidebar navigation mock with glowing search highlight
+- [x] Card 2 — prompt bubble with six independently floating capability pill tags
+- [x] Card 3 — institution selector mock (UPSS, WAEC, Miracle centers)
+- [x] Staggered scroll-reveal animations (Framer Motion, useInView, custom variant delay)
+- [x] Subtle card hover elevation (y: -4, 250ms ease-out)
+- [x] Radial glow on card hover
+- [x] Floating pills animate independently (different timing + delay, no sync)
+- [x] Responsive layout (1-col mobile → 2-col tablet → 3-col desktop)
+- [x] prefers-reduced-motion respected on all animations
+- [x] Zero TypeScript errors, zero ESLint errors
 
 ---
 
@@ -361,6 +373,28 @@ This document should always reflect the current state of the repository.
   - All press interactions share a single `BUTTON_TRANSITION` constant (`{ duration: 0.15, ease: "easeOut" }`) for consistency.
   - `will-change-transform` applied to all animated buttons to promote GPU layers.
   - Zero layout or styling changes made.
+  - Build verified: `pnpm run build` → zero TypeScript errors, all 5 routes compile cleanly.
+
+### Next Session
+
+- Build waitlist submission flow and connect it to the database.
+
+## 2026-07-28 (Session 4)
+
+### Completed
+
+- **Students Section** (`students.md` prompt) — full implementation:
+  - Replaced placeholder `Students` component with fully designed "Stop studying harder." section.
+  - Section header: right-aligned, `/public/star.svg` decorative stars with independent very-slow float animations.
+  - Heading: Instrument Serif, large (up to 64px) — "Stop studying harder." — "Stop" in brand blue.
+  - Subtitle: Commissioner, uppercase, tight tracking — "START STUDYING SMARTER" — "STUDYING SMARTER" highlighted in brand blue.
+  - Three feature cards in a horizontal responsive grid (1-col → 2-col → 3-col).
+  - Card 1: sidebar navigation mock UI with active "Resources" item and glowing search highlight pointing to "Everything you are looking for".
+  - Card 2: prompt bubble ("Organisation of Life") surrounded by 6 independently floating capability pills (Analysis, Quizzes, Notes, Video tutorials, Memory tricks, Flash cards) — no synchronized movement.
+  - Card 3: institution selector mock with UPSS, WAEC, Miracle centers buttons and join CTA.
+  - All animations: staggered fade-up on scroll (useInView, once), GPU-friendly (opacity + transform only), prefers-reduced-motion respected.
+  - Hover: subtle y-lift (-4px, 250ms ease-out) + radial glow + border colour transition on all cards.
+  - Animation stagger uses Framer Motion `custom` prop variant factory — no duplicate `transition` props.
   - Build verified: `pnpm run build` → zero TypeScript errors, all 5 routes compile cleanly.
 
 ### Next Session
