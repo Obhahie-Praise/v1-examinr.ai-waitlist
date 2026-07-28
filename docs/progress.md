@@ -145,9 +145,11 @@ Vercel
 
 ### Footer
 
-- [x] Contact section
-- [x] Social links
-- [x] Personal signature
+- [x] Contact section ("Let's connect.")
+- [x] Social links (bracket styling, hover animations, proper accessibility)
+- [x] Personal signature ("Built by a student. For students.", "Built with ☕")
+- [x] Responsive layout (two-column desktop, single-column mobile)
+- [x] Staggered fade-up animations on scroll
 
 ---
 
@@ -466,6 +468,27 @@ This document should always reflect the current state of the repository.
   - All animations: staggered fade-up on scroll (useInView, once), GPU-friendly, prefers-reduced-motion respected.
   - Hover: subtle y-lift (-4px, 250ms ease-out) + radial glow + border colour transition on all cards.
   - Build verified: `pnpm run build` → zero TypeScript errors, all routes compile cleanly.
+
+### Next Session
+
+- Implement Footer.
+
+## 2026-07-28 (Session 7)
+
+### Completed
+
+- **Footer Section** (`footer.md` prompt) — full implementation:
+  - Replaced placeholder `Footer` component with fully designed footer section.
+  - Overall layout: large rounded container (`bg-[#0D1929]/80`, `rounded-[36px]`) with generous padding.
+  - Left Column: "Built by a student. For students." (Commissioner, muted), main heading "Hi, I'm Praise." (Commissioner + Instrument Serif italic for "Praise."), "Built with ☕ and too many late nights."
+  - Right Column: three short paragraphs explaining the motivation behind Examinr.ai.
+  - Bottom area: "Let's connect." (Instrument Serif italic) with a horizontal divider (`bg-white/[0.08]`).
+  - Social links: inline bracket styling (`[ GITHUB ]`, etc.) with hover interaction (text turns blue, underline fades in, subtle 2px upward movement).
+  - Copyright info right-aligned (desktop) / left-aligned (mobile).
+  - Accessibility: `rel="noopener noreferrer"` and `aria-label`s on all external links.
+  - Animations: staggered fade-up on scroll (`useInView`, once) for a calm, premium feel.
+  - Responsive: two columns on desktop, single column stacking on mobile with left alignment.
+  - Build verified: zero TypeScript errors, zero ESLint errors.
 
 ### Next Session
 
