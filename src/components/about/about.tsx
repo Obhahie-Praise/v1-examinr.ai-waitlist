@@ -125,7 +125,7 @@ export function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative w-full max-w-[1120px] mx-auto px-6 py-24 md:py-32 flex flex-col items-center"
+      className="relative w-full max-w-[1350px] mx-auto flex flex-col items-center"
     >
       {/* ── Section Header ── */}
       <div className="relative flex flex-col items-center text-center mb-16 md:mb-20">
@@ -142,9 +142,9 @@ export function About() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="font-display font-normal text-5xl md:text-6xl lg:text-[64px] leading-[1.15] text-white-text max-w-3xl"
+          className="font-display font-normal text-5xl md:text-6xl lg:text-[64px] leading-[1.15] bg-linear-to-l from-[#3B82F6] via-[#9DC1FB] to-[#3B82F6] bg-clip-text text-transparent"
         >
-          <span className="text-[#3B82F6]">Building</span> the future of
+          Building the future of
           confident learning.
         </motion.h2>
 
@@ -154,22 +154,22 @@ export function About() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="mt-5 font-primary font-medium uppercase tracking-[0.12em] text-sm text-white-text/70"
+          className="mt-5 font-primary font-medium uppercase tracking-[-3%] text-[20px] text-white-text/70"
         >
           STUDY WITH AI WITH{" "}
-          <span className="text-[#3B82F6]">PREDICTIVE INTELLIGENCE</span>
+          <span className="bg-linear-to-r from-[#3B82F6] to-white bg-clip-text text-transparent">PREDICTIVE INTELLIGENCE</span>
         </motion.p>
       </div>
 
       {/* ── Card Grid ── */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-4 md:gap-5">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-4 md:gap-6">
         {/* ── Card 1 — Large Left ── */}
         <motion.div
           variants={FADE_UP}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
-          className="relative rounded-[30px] border border-white/[0.07] bg-[#0D1929]/80 backdrop-blur-md overflow-hidden min-h-[480px] md:min-h-[560px] p-8 md:p-10 flex flex-col group transition-all duration-300 hover:border-[#3B82F6]/20"
+          className="relative rounded-[30px] border border-light-border bg-white/3 backdrop-blur-md overflow-hidden min-h-[480px] md:min-h-[560px] p-8 md:p-10 flex flex-col group transition-all duration-300 hover:border-[#3B82F6]/20"
         >
           {/* Radial glow */}
           <div className="absolute inset-0 rounded-[30px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -215,7 +215,7 @@ export function About() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
-            className="relative rounded-[30px] border border-white/[0.07] bg-[#0D1929]/80 backdrop-blur-md overflow-hidden min-h-[300px] md:min-h-[340px] p-7 md:p-8 flex flex-col group transition-all duration-300 hover:border-[#A855F7]/20"
+            className="relative rounded-[30px] border border-light-border bg-white/3 backdrop-blur-md overflow-hidden min-h-[300px] md:min-h-[340px] p-7 md:p-8 flex flex-col group transition-all duration-300 hover:border-[#A855F7]/20"
           >
             {/* Purple radial glow */}
             <div className="absolute inset-0 rounded-[30px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -254,7 +254,7 @@ export function About() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             transition={{ duration: 0.6, delay: 0.45, ease: "easeOut" }}
-            className="relative rounded-[30px] border border-white/[0.07] bg-[#0D1929]/80 backdrop-blur-md p-7 md:p-8 flex flex-col group transition-all duration-300 hover:border-[#22C55E]/20"
+            className="relative rounded-[30px] border border-light-border bg-white/3 backdrop-blur-md p-7 md:p-8 flex flex-col group transition-all duration-300 hover:border-[#22C55E]/20"
           >
             {/* Green radial glow */}
             <div className="absolute inset-0 rounded-[30px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"

@@ -446,7 +446,7 @@ export function Waitlist() {
       <section
         id="waitlist"
         ref={sectionRef}
-        className="relative w-full max-w-[1350px] mx-auto px-6 pt-32 md:pt-48 pb-24 md:pb-32 flex flex-col items-center"
+        className="relative w-full max-w-[1350px] mx-auto flex flex-col items-center pb-50"
       >
         {/* ── Section Header ── */}
         <div className="relative flex flex-col items-center text-center mb-10 md:mb-[32px]">
@@ -468,9 +468,9 @@ export function Waitlist() {
             variants={FADE_UP}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="font-display font-normal text-5xl md:text-6xl lg:text-[64px] leading-[1.15] text-white-text max-w-3xl"
+            className="font-display font-normal text-5xl md:text-6xl lg:text-[64px] leading-[1.15] max-w-3xl bg-linear-to-l from-[#3B82F6] via-[#9DC1FB] to-[#3B82F6] bg-clip-text text-transparent"
           >
-            <span className="text-[#3B82F6]">Ready</span> to study differently?
+            Ready to study differently?
           </motion.h2>
 
           {/* Supporting paragraph */}

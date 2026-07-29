@@ -31,7 +31,7 @@ function DecorativeStar({
 
   return (
     <motion.div
-      className="absolute pointer-events-none select-none"
+      className="absolute pointer-events-none select-none -z-1"
       style={style}
       animate={
         shouldReduceMotion
@@ -58,14 +58,14 @@ function DecorativeStar({
 function ResourceListIllustration() {
   const resources = [
     { name: "Biology",       access: "Public",       icon: "📄" },
-    { name: "Mock Exam",     access: "SSS Only",     icon: "📋" },
+    { name: "Mock Exam",     access: "SS3 Only",     icon: "📋" },
     { name: "Teacher Guide", access: "Science Dept", icon: "📘" },
     { name: "Assignment",    access: "Private Class",icon: "📝" },
   ];
 
   return (
     <div
-      className="relative w-full rounded-2xl border border-white/[0.07] bg-[#0A111D]/80 backdrop-blur-sm overflow-hidden"
+      className="relative w-full rounded-2xl border border-light-border bg-[#0A111D]/20 backdrop-blur-sm overflow-hidden"
       style={{ height: "168px" }}
     >
       <div className="p-3 flex flex-col gap-1.5">
@@ -76,13 +76,7 @@ function ResourceListIllustration() {
           >
             <div className="flex items-center gap-2">
               {/* Bookmark-style icon */}
-              <svg
-                className="w-3 h-3 text-[#3B82F6] shrink-0"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5z" />
-              </svg>
+              <div className="w-4.5 h-4.5 rounded-[3px] bg-linear-to-br from-[#151A1F01] via-[#3B82F6] to-[#151A1F01] shrink-0" />
               <span className="text-[10px] font-primary text-white/60">{r.name}</span>
             </div>
             <span className="text-[8px] font-primary text-white/30 whitespace-nowrap">
@@ -106,10 +100,10 @@ function AnalyticsIllustration() {
 
   return (
     <div
-      className="relative w-full rounded-2xl border border-white/[0.07] bg-[#0A111D]/80 backdrop-blur-sm p-4"
+      className="relative w-full rounded-2xl border border-light-border bg-[#0A111D]/20 backdrop-blur-sm p-4"
       style={{ height: "168px" }}
     >
-      <p className="text-[9px] font-primary text-white/35 uppercase tracking-widest mb-3">
+      <p className="text-[9px] font-primary text-white/60 uppercase tracking-widest mb-3">
         Most Difficult Topics
       </p>
 
@@ -117,7 +111,7 @@ function AnalyticsIllustration() {
         {topics.map((t) => (
           <div key={t.label} className="flex items-center gap-3">
             {/* Bar */}
-            <div className="flex-1 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+            <div className="flex-1 h-1 rounded-full bg-white/[0.06] overflow-hidden">
               <motion.div
                 className="h-full rounded-full bg-[#3B82F6]"
                 initial={{ width: 0 }}
@@ -147,7 +141,7 @@ function ExamDashboardIllustration() {
 
   return (
     <div
-      className="relative w-full rounded-2xl border border-white/[0.07] bg-[#0A111D]/80 backdrop-blur-sm p-4"
+      className="relative w-full rounded-2xl border border-white/[0.07] bg-[#0A111D]/20 backdrop-blur-sm p-4"
       style={{ height: "168px" }}
     >
       {/* Exam header */}
@@ -223,16 +217,13 @@ export function Institutions() {
     <section
       id="for-institutions"
       ref={sectionRef}
-      className="relative w-full max-w-[1120px] mx-auto px-6 py-24 md:py-32 flex flex-col items-start"
+      className="relative w-full max-w-[1350px] mx-auto flex flex-col items-start"
     >
       {/* ── Section Header ── */}
-      <div className="relative flex flex-col items-start text-left mb-16 md:mb-20 w-full">
+      <div className="relative flex flex-col items-start text-left mb-16 md:mb-8 w-full">
         {/* Decorative stars */}
-        <DecorativeStar size={22} style={{ top: "-14px", left: "160px" }} delay={0}   />
-        <DecorativeStar size={13} style={{ top: "-6px",  left: "220px" }} delay={2.8} />
-        <DecorativeStar size={16} style={{ top: "24px",  left: "-24px" }} delay={1.5} />
-        <DecorativeStar size={10} style={{ top: "-8px",  left: "-48px" }} delay={4.1} />
-        <DecorativeStar size={9}  style={{ bottom: "6px",left: "280px" }} delay={3.3} />
+        <DecorativeStar size={68.83} style={{ top: "1px", left: "10px" }} delay={0}   />
+        <DecorativeStar size={42.63} style={{ top: "-6px",  left: "360px" }} delay={2.8} />
 
         {/* Heading */}
         <motion.h2
@@ -240,9 +231,9 @@ export function Institutions() {
           variants={FADE_UP}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="font-display font-normal text-5xl md:text-6xl lg:text-[64px] leading-[1.15] text-white-text max-w-3xl"
+          className="font-display font-normal text-5xl md:text-6xl lg:text-[64px] leading-[1.15] max-w-3xl bg-linear-to-l from-[#3B82F6] via-[#9DC1FB] to-[#3B82F6] bg-clip-text text-transparent"
         >
-          <span className="text-[#3B82F6]">Stop</span> teaching alone.
+          Stop teaching alone.
         </motion.h2>
 
         {/* Subtitle */}
@@ -251,15 +242,15 @@ export function Institutions() {
           variants={FADE_UP}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="mt-5 font-primary font-medium uppercase tracking-[0.12em] text-sm text-white-text/70"
+          className="mt-5 font-primary font-medium uppercase tracking-[-3%] text-[20px] text-white-text/70"
         >
           BUILD A SMARTER{" "}
-          <span className="text-[#3B82F6]">LEARNING ECOSYSTEM</span>
+          <span className="bg-linear-to-r from-[#3B82F6] to-white bg-clip-text text-transparent">LEARNING ECOSYSTEM</span>
         </motion.p>
       </div>
 
       {/* ── Feature Cards ── */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 min-w-[357.33px]">
         {cards.map((card) => (
           <motion.div
             key={card.heading}
@@ -268,7 +259,7 @@ export function Institutions() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             whileHover={{ y: -4, transition: { duration: 0.25, ease: "easeOut" } }}
-            className="relative rounded-[30px] border border-white/[0.07] bg-[#0D1929]/80 backdrop-blur-md overflow-hidden p-7 md:p-8 flex flex-col gap-5 group transition-all duration-300 hover:border-[#3B82F6]/20 will-change-transform"
+            className="relative rounded-[30px] border border-light-border bg-white/3 backdrop-blur-md overflow-hidden p-7 md:p-6 flex flex-col gap-5 group transition-all duration-300 hover:border-[#3B82F6]/20 will-change-transform"
           >
             {/* Radial glow on hover */}
             <div
@@ -279,23 +270,24 @@ export function Institutions() {
               }}
             />
 
+            
+
+            {/* Text content */}
+            <div className="relative z-10 flex flex-col gap-1.5">
+              <h3 className="font-primary font-medium text-lg md:text-xl leading-[-2%] text-white-text">
+                {card.heading}
+              </h3>
+              <p className="font-primary font-medium text-[16px] text-white-text">
+                {card.supportingLine}
+              </p>
+            </div>
             {/* Illustration */}
             <div className="relative z-10 w-full">
               {card.illustration}
             </div>
 
-            {/* Text content */}
-            <div className="relative z-10 flex flex-col gap-1.5">
-              <h3 className="font-display font-normal text-2xl md:text-[26px] leading-[1.25] text-white-text">
-                {card.heading}
-              </h3>
-              <p className="font-primary font-medium text-base text-[#3B82F6]">
-                {card.supportingLine}
-              </p>
-            </div>
-
             {/* Body */}
-            <p className="relative z-10 font-primary text-sm md:text-[15px] leading-relaxed text-white-text/50 mt-auto">
+            <p className="relative z-10 font-primary text-sm md:text-[14px] leading-relaxed text-text-accent mt-auto">
               {card.body}
             </p>
           </motion.div>
