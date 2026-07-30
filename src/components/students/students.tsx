@@ -6,6 +6,7 @@ import {
   useInView,
   useReducedMotion,
 } from "framer-motion";
+import { Plus, Send } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -98,12 +99,12 @@ function SidebarIllustration() {
   ];
 
   return (
-    <div
-      className="relative w-full rounded-2xl border border-white/[0.07] bg-[#0A111D]/80 backdrop-blur-sm overflow-hidden flex"
-      style={{ height: "168px" }}
-    >
+    <div className="relative w-full h-full rounded-2xl overflow-hidden flex items-center justify-center">
       {/* Sidebar */}
-      <Image src={"/sidebar.svg"} alt="sidebar" width={232} height={118} />
+      <Image src={"/sidebar.svg"} alt="sidebar" width={400} height={210} />
+      <p className="text-[12px] absolute top-[87px] right-[0px] bg-linear-to-r from-[#FFFFFF] to-[#3B82F6] bg-clip-text text-transparent">
+        Everything you are looking for
+      </p>
     </div>
   );
 }
@@ -119,7 +120,7 @@ function PromptIllustration() {
       {CAPABILITY_PILLS.map((pill, i) => (
         <motion.span
           key={pill.label}
-          className="absolute px-2.5 py-1 rounded-full text-[9px] font-primary font-medium whitespace-nowrap border border-[#3B82F6]/20 bg-[#3B82F6]/08 text-[#9DC1FB] backdrop-blur-sm"
+          className="absolute px-2.5 min-w-15.5 text-center py-1 rounded-[6px] text-[10px] font-primary font-medium whitespace-nowrap bg-text-highlight text-white-text backdrop-blur-sm"
           style={PILL_POSITIONS[i]}
           animate={shouldReduceMotion ? {} : { y: [0, -5, 0] }}
           transition={{
@@ -136,10 +137,12 @@ function PromptIllustration() {
       {/* Central prompt bubble */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative">
-          <div className="px-4 py-2.5 rounded-xl border border-[#3B82F6]/30 bg-[#0A111D]/90 shadow-[0_0_24px_rgba(59,130,246,0.12)]">
-            <span className="text-[11px] font-primary font-medium text-white/80">
-              Organisation of Life
-            </span>
+          <div className="px-2 py-1.5 rounded-md gap-4 flex items-center min-w-36 bg-chat-input shadow-[0_0_24px_rgba(59,130,246,0.12)] text-[12px] font-primary font-medium text-white/80">
+            <div className="space-x-1 flex items-center font-normal">
+              <Plus size={12} className="text-text-accent" />
+              <span className="">Organisation of Life</span>
+            </div>
+            <Send size={12} className="text-text-accent" />
           </div>
           {/* Subtle glow behind prompt */}
           <div
@@ -155,14 +158,14 @@ function PromptIllustration() {
 // ── Card 3 illustration — institution selector ─────────────────────────────────
 
 function InstitutionIllustration() {
-  const institutions = ["UPSS", "WAEC", "Miracle centers"];
+  const institutions = ["Your school", "WAEC", "Miracle centers"];
 
   return (
     <div
-      className="relative w-full rounded-2xl border border-white/[0.07] bg-[#0A111D]/80 backdrop-blur-sm p-4"
+      className="relative w-full rounded-2xl border border-white/[0.07] bg-[#0A111D]/80 backdrop-blur-sm p-3"
       style={{ height: "168px" }}
     >
-      <p className="text-[9px] font-primary text-white/35 uppercase tracking-widest mb-3">
+      <p className="text-[10px] font-primary text-text-accent uppercase tracking-widest mb-3">
         Your institutes
       </p>
 
@@ -170,10 +173,10 @@ function InstitutionIllustration() {
         {institutions.map((name, i) => (
           <button
             key={name}
-            className={`px-3 py-1.5 rounded-lg text-[10px] font-primary font-medium border transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-[10px] font-primary font-medium transition-colors ${
               i === 0
-                ? "border-[#3B82F6]/40 bg-[#3B82F6]/12 text-[#3B82F6]"
-                : "border-white/[0.08] bg-white/[0.03] text-white/40"
+                ? "text-white-text bg-[#3B82F6]"
+                : "bg-chat-input text-white-text"
             }`}
           >
             {name}
@@ -182,7 +185,7 @@ function InstitutionIllustration() {
       </div>
 
       <div className="border-t border-white/[0.05] pt-3">
-        <p className="text-[9px] font-primary text-white/30 leading-relaxed">
+        <p className="text-[12px] bg-linear-to-r from-[#FFFFFF] to-[#3B82F6] bg-clip-text text-transparent">
           Join the institutes and access their resources
         </p>
       </div>

@@ -128,13 +128,11 @@ export function About() {
       className="relative w-full max-w-[1350px] mx-auto flex flex-col items-center"
     >
       {/* ── Section Header ── */}
-      <div className="relative flex flex-col items-center text-center mb-16 md:mb-20">
+      <div className="relative flex flex-col items-start w-full text-center mb-16 md:mb-20">
         {/* Decorative stars */}
-        <DecorativeStar size={22} style={{ top: "-12px", left: "-36px" }}  delay={0}   />
-        <DecorativeStar size={14} style={{ top: "-4px",  left: "-68px" }}  delay={3.5} />
-        <DecorativeStar size={18} style={{ top: "16px",  right: "-40px" }} delay={1.8} />
-        <DecorativeStar size={12} style={{ top: "-8px",  right: "-72px" }} delay={4.2} />
-        <DecorativeStar size={10} style={{ bottom: "8px", left: "-52px" }} delay={2.6} />
+        <DecorativeStar size={68.83} style={{ top: "1px", left: "10px" }} delay={0}   />
+        <DecorativeStar size={42.63} style={{ top: "-6px",  left: "360px" }} delay={2.8} />
+
 
         {/* Heading */}
         <motion.h2
