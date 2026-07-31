@@ -88,7 +88,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 25, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="relative w-full max-w-5xl rounded-2xl border border-light-border"
+          className="relative w-full max-w-5xl rounded-2xl border border-light-border transform rotate-z-[-2deg]"
         >
           <Image
             src="/hero.svg"
