@@ -165,7 +165,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed inset-0 z-[100] h-screen bg-app-bg flex flex-col p-6"
+            className="fixed inset-0 z-[100] h-fit bg-app-bg/50 backdrop-blur-xl flex flex-col p-6"
           >
             <div className="flex items-center justify-between mb-12">
               <Link

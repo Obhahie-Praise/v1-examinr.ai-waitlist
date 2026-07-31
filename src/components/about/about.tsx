@@ -200,7 +200,7 @@ export function About() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="font-display font-normal text-5xl md:text-6xl lg:text-[64px] leading-[1.15] bg-linear-to-l from-[#3B82F6] via-[#9DC1FB] to-[#3B82F6] bg-clip-text text-transparent"
+          className="font-display font-normal text-5xl md:text-6xl lg:text-[64px] text-start leading-[1.15] bg-linear-to-l from-[#3B82F6] via-[#9DC1FB] to-[#3B82F6] bg-clip-text text-transparent"
         >
           Building the future of confident learning.
         </motion.h2>
@@ -211,7 +211,7 @@ export function About() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="mt-5 font-primary font-medium uppercase tracking-[-3%] text-[20px] text-white-text/70"
+          className="mt-5 font-primary font-medium text-start uppercase tracking-[-3%] text-[20px] text-white-text/70"
         >
           STUDY WITH AI WITH{" "}
           <span className="bg-linear-to-r from-[#3B82F6] to-white bg-clip-text text-transparent">

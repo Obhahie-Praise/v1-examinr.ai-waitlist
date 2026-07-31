@@ -8,8 +8,8 @@ const BUTTON_TRANSITION = { duration: 0.15, ease: "easeOut" } as const;
 
 export function Hero() {
   return (
-    <section className="relative w-full flex flex-col items-center justify-center md:pt-24 pt-12 pb-32 z-10 text-center">
-      <div className="container mx-auto px-6 flex flex-col items-center max-w-[1120px]">
+    <section className="relative w-full flex flex-col items-center justify-center md:pt-24 sm:pt-12 pb-32 z-10 text-center">
+      <div className="container mx-auto md:px-6 flex flex-col items-center max-w-[1120px]">
         {/* Heading */}
         <motion.h1
           variants={{
@@ -22,7 +22,7 @@ export function Hero() {
           }}
           initial="hidden"
           animate="visible"
-          className="font-display font-normal text-6xl md:text-7xl lg:text-[80px] leading-[1.2] max-w-4xl md:mb-5 mb-3 bg-linear-to-b from-[#3B82F6] to-[#9DC1FB40] bg-clip-text text-transparent"
+          className="font-display font-normal text-6xl md:text-7xl lg:text-[80px] leading-[1.2] max-w-4xl md:mb-5 mb-6 bg-linear-to-b from-[#3B82F6] to-[#9DC1FB40] bg-clip-text text-transparent"
         >
           Study with confidence
         </motion.h1>
@@ -39,7 +39,7 @@ export function Hero() {
           }}
           initial="hidden"
           animate="visible"
-          className="text-lg md:text-[16px] text-text-accent max-w-[443px] md:mb-5 mb-3 font-primary font-medium leading-[132.2%] tracking-[-6%]"
+          className="text-lg md:text-[16px] text-text-accent max-w-[443px] md:mb-5 mb-6 font-primary font-medium leading-[132.2%] tracking-[-6%]"
         >
           The AI designed to help students prepare for exams with predictions, simulations &amp; endless resources
         </motion.p>

@@ -12,7 +12,7 @@ export default function LandingPage() {
     <div className="flex flex-col min-h-screen relative">
       <BackgroundWave />
       <Navbar />
-      <main className="relative z-10 flex-1 pt-32 p-8 flex flex-col md:gap-100 sm:gap-60 gap-50">
+      <main className="relative z-10 flex-1 pt-32 sm:p-8 p-6 flex flex-col md:gap-100 sm:gap-60 gap-50">
         <Hero />
         <About />
         <Students />
