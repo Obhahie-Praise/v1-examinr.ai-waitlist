@@ -494,3 +494,16 @@ This document should always reflect the current state of the repository.
 
 - Run Prisma migration and connect to production Neon database.
 - Deploy to Vercel.
+
+## 2026-07-31 (Animation Polish)
+
+### Completed
+
+- **Animation & Responsive Polish Pass**:
+  - Extracted `DecorativeStar` component to avoid duplication and implemented a scroll-driven velocity animation using `framer-motion`. Stars accelerate smoothly on scroll down, reverse on scroll up, and gracefully return to baseline speed.
+  - Improved About section pill animations by applying `will-change-transform` for hardware-accelerated, jitter-free rendering.
+  - Refactored Waitlist form layout to separate the input and button into distinct blocks on mobile, while retaining the unified pill layout on desktop.
+
+### Next Session
+
+- Deploy to Vercel and verify animations in production.

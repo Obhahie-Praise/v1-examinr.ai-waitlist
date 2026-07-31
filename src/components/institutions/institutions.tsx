@@ -1,7 +1,6 @@
 "use client";
 
-import { type Variants, motion, useInView, useReducedMotion } from "framer-motion";
-import Image from "next/image";
+import { type Variants, motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { DecorativeStar } from "@/components/ui/decorative-star";
 

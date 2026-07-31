@@ -4,9 +4,7 @@ import {
   type Variants,
   motion,
   useInView,
-  useReducedMotion,
-} from "framer-motion";
-import Image from "next/image";
+  useReducedMotion} from 'framer-motion'
 import { useRef } from "react";
 import { DecorativeStar } from "@/components/ui/decorative-star";
 
@@ -139,7 +137,7 @@ function Pill({
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export function About() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null); 
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   return (
