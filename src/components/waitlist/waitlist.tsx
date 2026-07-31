@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { CheckCircle, X, Share2, Copy, Check } from "lucide-react";
+import { DecorativeStar } from "@/components/ui/decorative-star";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -39,40 +40,7 @@ const FADE_UP: Variants = {
 
 // ─── Sub-components ────────────────────────────────────────────────────────────
 
-function DecorativeStar({
-  size,
-  style,
-  delay,
-}: {
-  size: number;
-  style?: React.CSSProperties;
-  delay?: number;
-}) {
-  const shouldReduceMotion = useReducedMotion();
 
-  return (
-    <motion.div
-      className="absolute pointer-events-none select-none"
-      style={style}
-      animate={
-        shouldReduceMotion
-          ? {}
-          : {
-              y: [0, -4, 0],
-              opacity: [0.55, 0.85, 0.55],
-            }
-      }
-      transition={{
-        duration: 14,
-        delay: delay ?? 0,
-        ease: "easeInOut",
-        repeat: Infinity,
-      }}
-    >
-      <Image src="/star.svg" alt="" width={size} height={size} />
-    </motion.div>
-  );
-}
 
 // ─── Card decorations ─────────────────────────────────────────────────────────
 
@@ -497,7 +465,7 @@ export function Waitlist() {
           <form
             onSubmit={handleSubmit}
             noValidate
-            className="flex flex-col sm:flex-row items-stretch gap-3 w-full rounded-[10px] bg-[#1E4F9F]/10 border-[0.5px] border-white/[0.09] text-white-text text-[14px]  focus:border-[#3B82F6]/50 focus:ring-1 focus:ring-[#3B82F6]/30 transition-all duration-200 ease-out"
+            className="flex flex-col sm:flex-row items-stretch gap-3 w-full sm:rounded-[10px] sm:bg-[#1E4F9F]/10 sm:border-[0.5px] sm:border-white/[0.09] text-white-text text-[14px] sm:focus-within:border-[#3B82F6]/50 sm:focus-within:ring-1 sm:focus-within:ring-[#3B82F6]/30 transition-all duration-200 ease-out"
           >
             {/* Email input */}
             <input
@@ -512,9 +480,9 @@ export function Waitlist() {
               required
               autoComplete="email"
               aria-label="Your email address"
-              aria-describedby={error ? "waitlist-error" : undefined}
-              className="flex-1 px-5 sm:py-0 py-2.5 font-primary placeholder:text-white/30 focus:outline-none"
-            />
+                aria-describedby={error ? "waitlist-error" : undefined}
+                className="flex-1 px-5 py-3 sm:py-0 font-primary placeholder:text-white/30 focus:outline-none rounded-[10px] sm:rounded-none bg-[#1E4F9F]/10 sm:bg-transparent border-[0.5px] border-white/[0.09] sm:border-transparent focus:border-[#3B82F6]/50 sm:focus:border-transparent focus:ring-1 focus:ring-[#3B82F6]/30 sm:focus:ring-0 transition-all duration-200 ease-out"
+              />
 
             {/* Submit button — matches the exact button style used site-wide. */}
             <motion.button
@@ -523,7 +491,7 @@ export function Waitlist() {
               whileHover={isSubmitting ? {} : { scale: 1.03 }}
               whileTap={isSubmitting ? {} : { scale: 0.96, boxShadow: "none" }}
               transition={BUTTON_TRANSITION}
-              className="sm:w-fit w-full px-5 py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white text-[14px] font-medium transition-colors hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed will-change-transform whitespace-nowrap"
+              className="sm:w-fit w-full px-5 py-3 sm:py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white text-[14px] font-medium transition-colors hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed will-change-transform whitespace-nowrap"
             >
               {isSubmitting ? "Joining..." : "Join waitlist"}
             </motion.button>

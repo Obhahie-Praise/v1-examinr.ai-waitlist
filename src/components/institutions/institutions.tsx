@@ -3,6 +3,7 @@
 import { type Variants, motion, useInView, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
+import { DecorativeStar } from "@/components/ui/decorative-star";
 
 // ─── Animation variants ────────────────────────────────────────────────────────
 
@@ -18,40 +19,7 @@ const FADE_UP: Variants = {
 
 // ─── Sub-components ────────────────────────────────────────────────────────────
 
-function DecorativeStar({
-  size,
-  style,
-  delay,
-}: {
-  size: number;
-  style?: React.CSSProperties;
-  delay?: number;
-}) {
-  const shouldReduceMotion = useReducedMotion();
 
-  return (
-    <motion.div
-      className="absolute pointer-events-none select-none -z-1"
-      style={style}
-      animate={
-        shouldReduceMotion
-          ? {}
-          : {
-              y: [0, -4, 0],
-              opacity: [0.55, 0.85, 0.55],
-            }
-      }
-      transition={{
-        duration: 14,
-        delay: delay ?? 0,
-        ease: "easeInOut",
-        repeat: Infinity,
-      }}
-    >
-      <Image src="/star.svg" alt="" width={size} height={size} />
-    </motion.div>
-  );
-}
 
 // ── Card 1 illustration — resource list with access levels ─────────────────────
 

@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
+import { DecorativeStar } from "@/components/ui/decorative-star";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -94,40 +95,7 @@ const FADE_UP: Variants = {
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-function DecorativeStar({
-  size,
-  style,
-  delay,
-}: {
-  size: number;
-  style?: React.CSSProperties;
-  delay?: number;
-}) {
-  const shouldReduceMotion = useReducedMotion();
 
-  return (
-    <motion.div
-      className="absolute pointer-events-none select-none"
-      style={style}
-      animate={
-        shouldReduceMotion
-          ? {}
-          : {
-              y: [0, -4, 0],
-              opacity: [0.55, 0.85, 0.55],
-            }
-      }
-      transition={{
-        duration: 14,
-        delay: delay ?? 0,
-        ease: "easeInOut",
-        repeat: Infinity,
-      }}
-    >
-      <Image src="/star.svg" alt="" width={size} height={size} />
-    </motion.div>
-  );
-}
 
 function Pill({
   pill,
@@ -145,7 +113,7 @@ function Pill({
 
   return (
     <motion.span
-      className={`absolute px-3 py-1.5 rounded-full text-xs font-primary font-medium whitespace-nowrap backdrop-blur-sm ${
+      className={`absolute px-3 py-1.5 rounded-full text-xs font-primary font-medium whitespace-nowrap backdrop-blur-sm will-change-transform ${
         color === "blue" ? blueClasses : purpleClasses
       }`}
       style={{ top: pill.top, left: pill.left }}
