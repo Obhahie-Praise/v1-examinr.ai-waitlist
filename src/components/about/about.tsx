@@ -179,15 +179,15 @@ export function About() {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="mt-5 font-primary font-medium text-start uppercase tracking-[-3%] text-[20px] text-white-text/70"
         >
-          STUDY WITH AI WITH{" "}
+          STUDY SMARTER AI WITH{" "}
           <span className="bg-linear-to-r from-[#3B82F6] to-white bg-clip-text text-transparent">
-            PREDICTIVE INTELLIGENCE
+            AI THAT UNDERSTANDS
           </span>
         </motion.p>
       </div>
 
       {/* ── Card Grid ── */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-4 md:gap-6">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 md:gap-6">
         {/* ── Card 1 — Large Left ── */}
         <motion.div
           variants={FADE_UP}
@@ -238,7 +238,7 @@ export function About() {
         </motion.div>
 
         {/* ── Right column ── */}
-        <div className="flex flex-col gap-4 md:gap-5">
+        <div className="flex flex-col gap-8 md:gap-6">
           {/* ── Card 2 — Top Right ── */}
           <motion.div
             variants={FADE_UP}

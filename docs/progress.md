@@ -507,3 +507,35 @@ This document should always reflect the current state of the repository.
 ### Next Session
 
 - Deploy to Vercel and verify animations in production.
+
+## 2026-08-01 (Footer Icons Refactor)
+
+### Completed
+
+- **Simple Icons Integration**:
+  - Installed `simple-icons` to leverage official brand SVGs.
+  - Replaced text-based social links (GITHUB, EMAIL, X, TIKTOK, WHATSAPP) in the Footer with their respective SVG icons (`siGithub`, `siGmail`, `siX`, `siTiktok`, `siWhatsapp`).
+  - Preserved original layout, spacing, and responsive behavior (icons scale with font size using `w-[1.2em] h-[1.2em]`).
+  - Retained the existing hover interactions and custom animated underlines.
+  - Verified accessibility by preserving `aria-label`s and adding `<title>` inside SVGs.
+  - Build verified: zero TypeScript errors, zero ESLint errors.
+
+### Next Session
+
+- Run Prisma migration and connect to production Neon database.
+- Deploy to Vercel.
+
+## 2026-08-01 (User Avatars)
+
+### Completed
+
+- **Avatar Population**:
+  - Replaced the placeholder empty circles in the `navbar.tsx` avatar stack with `user-1.jpg`, `user-2.jpg`, and `user-3.jpg` using Next.js `Image` components.
+  - Replaced the initial-based placeholder avatars in the `waitlist.tsx` section with the full sequence of user images (`user-1.jpg` through `user-5.jpg`).
+  - Preserved all existing avatar constraints (sizes, borders, overlapping layout, and responsive behavior).
+  - Build verified: zero TypeScript errors, zero ESLint errors.
+
+### Next Session
+
+- Run Prisma migration and connect to production Neon database.
+- Deploy to Vercel.

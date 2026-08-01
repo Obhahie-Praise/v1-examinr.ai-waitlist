@@ -3,6 +3,7 @@
 import { type Variants, motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { siGithub, siGmail, siX, siTiktok, siWhatsapp } from "simple-icons";
 
 // ─── Animation variants ────────────────────────────────────────────────────────
 
@@ -18,15 +19,36 @@ const FADE_UP: Variants = {
 // ─── Data ──────────────────────────────────────────────────────────────────────
 
 const SOCIAL_LINKS = [
-  { label: "GITHUB", href: "https://github.com", aria: "Visit GitHub profile" },
-  { label: "EMAIL", href: "mailto:hello@examinr.ai", aria: "Send an email" },
+  {
+    label: "GITHUB",
+    icon: siGithub,
+    href: "https://github.com",
+    aria: "Visit GitHub profile",
+  },
+  {
+    label: "EMAIL",
+    icon: siGmail,
+    href: "mailto:hello@examinr.ai",
+    aria: "Send an email",
+  },
   {
     label: "X (Twitter)",
+    icon: siX,
     href: "https://x.com",
     aria: "Visit X (Twitter) profile",
   },
-  { label: "TIKTOK", href: "https://tiktok.com", aria: "Visit TikTok profile" },
-  { label: "WHATSAPP", href: "https://whatsapp.com", aria: "Chat on WhatsApp" },
+  {
+    label: "TIKTOK",
+    icon: siTiktok,
+    href: "https://tiktok.com",
+    aria: "Visit TikTok profile",
+  },
+  {
+    label: "WHATSAPP",
+    icon: siWhatsapp,
+    href: "https://whatsapp.com",
+    aria: "Chat on WhatsApp",
+  },
 ];
 
 export function Footer() {
@@ -84,9 +106,7 @@ export function Footer() {
               animate={isInView ? "visible" : "hidden"}
               className="font-primary text-[16px] md:text-base leading-[114%] tracking-normal md:tracking-[-3%] text-white-text"
             >
-              I&apos;m a student who got tired of preparing for exams with
-              scattered notes, unpredictable questions, and AI that doesn&apos;t
-              understand how schools actually work.
+              I&apos;m a student who got tired of scattered notes, unpredictable exams, and AI that doesn&apos;t understand school life.
             </motion.p>
             <motion.p
               custom={0.5}
@@ -104,8 +124,7 @@ export function Footer() {
               animate={isInView ? "visible" : "hidden"}
               className="font-primary text-[15px] md:text-base leading-relaxed text-white-text tracking-normal md:tracking-[-3%]"
             >
-              If Examinr.ai sounds like something you&apos;d use, I&apos;d love
-              to hear from you.
+              If Examinr.ai sounds useful to you, I&apos;d love to hear from you.
             </motion.p>
           </div>
         </div>
@@ -132,7 +151,7 @@ export function Footer() {
             variants={FADE_UP}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="flex flex-wrap gap-x-4 gap-y-3"
+            className="flex flex-wrap gap-x-8 gap-y-3"
           >
             {SOCIAL_LINKS.map((link) => (
               <a
@@ -148,7 +167,15 @@ export function Footer() {
                   whileHover={{ y: -2 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
                 >
-                  [ {link.label} ]
+                  <svg
+                    role="img"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-[1.2em] h-[1.2em]"
+                  >
+                    <title>{link.icon.title}</title>
+                    <path d={link.icon.path} />
+                  </svg>
                 </motion.span>
                 {/* Custom underline that fades in on hover */}
                 <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-[#3B82F6] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

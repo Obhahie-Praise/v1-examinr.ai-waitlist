@@ -56,7 +56,7 @@ export function Hero() {
           }}
           initial="hidden"
           animate="visible"
-          className="flex flex-col sm:flex-row items-center text-[14px] md:w-fit w-full justify-center md:gap-6 gap-2 mb-14"
+          className="flex flex-col sm:flex-row items-center sm:text-[14px] text-[16px] md:w-fit w-full justify-center md:gap-5 gap-3 mb-14"
         >
           {/*
            * Primary CTA — whileHover lifts slightly, whileTap presses down with
@@ -67,7 +67,7 @@ export function Hero() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.96, boxShadow: "none" }}
             transition={BUTTON_TRANSITION}
-            className="px-5 md:w-fit w-full py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-colors hover:brightness-110 will-change-transform"
+            className="px-5 md:w-fit w-full sm:py-2.5 py-3 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-colors hover:brightness-110 will-change-transform"
           >
             Join waitlist
           </motion.button>
@@ -77,7 +77,7 @@ export function Hero() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.96 }}
             transition={BUTTON_TRANSITION}
-            className="px-5 md:w-fit w-full py-2.5 rounded-[10px] bg-light-border border border-light-border/20 text-white-text font-medium transition-colors hover:bg-white/5 will-change-transform"
+            className="px-5 md:w-fit w-full sm:py-2.5 py-3 rounded-[10px] bg-light-border border border-light-border/20 text-white-text font-medium transition-colors hover:bg-white/5 will-change-transform"
           >
             See the vision
           </motion.button>

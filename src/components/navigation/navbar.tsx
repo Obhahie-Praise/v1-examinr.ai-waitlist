@@ -118,11 +118,17 @@ export function Navbar() {
             {!isScrolled && (
               <div className="text-xs hidden md:flex items-center gap-6">
                 <div className="w-fit h-fit flex items-center relative">
-                  <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border z-[1000]"></span>
-                  <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border absolute left-2.25 z-[1000]"></span>
-                  <span className="w-4.5 h-4.5 rounded-full bg-dark-select border-app-bg border absolute left-4.5 z-[1000]"></span>
+                  <span className="w-4.5 h-4.5 rounded-full border-app-bg border z-[1000] relative overflow-hidden flex items-center justify-center shrink-0">
+                    <Image src="/user-1.jpg" alt="" fill sizes="18px" className="object-cover" />
+                  </span>
+                  <span className="w-4.5 h-4.5 rounded-full border-app-bg border absolute left-2.25 z-[1000] overflow-hidden flex items-center justify-center shrink-0">
+                    <Image src="/user-2.jpg" alt="" fill sizes="18px" className="object-cover" />
+                  </span>
+                  <span className="w-4.5 h-4.5 rounded-full border-app-bg border absolute left-4.5 z-[1000] overflow-hidden flex items-center justify-center shrink-0">
+                    <Image src="/user-3.jpg" alt="" fill sizes="18px" className="object-cover" />
+                  </span>
                 </div>
-                {displayCount + 231}+ already waiting
+                {displayCount}+ already waiting
               </div>
             )}
 

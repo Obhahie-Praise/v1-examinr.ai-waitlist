@@ -7,7 +7,7 @@ export function BackgroundWave() {
   return (
     <div className="absolute top-0 left-0 right-0 h-[100vh] w-full z-0 pointer-events-none flex items-center justify-center overflow-hidden">
       <motion.div
-        className="absolute blur-sm w-[110vw] h-[40vh]"
+        className="absolute w-[140vw] h-[40vh]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.35 }}
         transition={{ duration: 1.5, delay: 0.5 }}

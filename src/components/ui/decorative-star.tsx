@@ -49,7 +49,7 @@ export function DecorativeStar({ size, style, delay }: DecorativeStarProps) {
 
   return (
     <motion.div
-      className="absolute pointer-events-none select-none"
+      className="absolute pointer-events-none select-none blur-[3px] -z-100"
       style={{
         ...style,
         rotate: rotation,

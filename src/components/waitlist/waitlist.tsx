@@ -139,20 +139,25 @@ function MomentumDecoration() {
 
 // ─── Avatar stack ─────────────────────────────────────────────────────────────
 
-// Five small overlapping avatar initials — purely decorative.
-const AVATAR_INITIALS = ["AK", "MO", "ES", "JP", "RC"];
-const AVATAR_COLORS = ["#1D4ED8", "#2563EB", "#3B82F6", "#60A5FA", "#93C5FD"];
+// Five small overlapping user avatars — purely decorative.
+const AVATAR_IMAGES = [
+  "/user-1.jpg",
+  "/user-2.jpg",
+  "/user-3.jpg",
+  "/user-4.jpg",
+  "/user-5.jpg",
+];
 
 function AvatarStack() {
   return (
     <div className="flex items-center" aria-hidden="true">
-      {AVATAR_INITIALS.map((initials, i) => (
+      {AVATAR_IMAGES.map((src, i) => (
         <div
-          key={initials}
-          className="w-7 h-7 rounded-full border-2 border-[#0E1318] flex items-center justify-center text-[8px] font-primary font-medium text-white/80 -ml-2 first:ml-0 shrink-0"
-          style={{ backgroundColor: AVATAR_COLORS[i], zIndex: i }}
+          key={src}
+          className="w-7 h-7 rounded-full border-2 border-[#0E1318] flex items-center justify-center -ml-2 first:ml-0 shrink-0 relative overflow-hidden"
+          style={{ zIndex: i }}
         >
-          {initials}
+          <Image src={src} alt="" fill sizes="28px" className="object-cover" />
         </div>
       ))}
     </div>
@@ -527,13 +532,13 @@ export function Waitlist() {
           <div className="flex items-center gap-3">
             <AvatarStack />
             <span className="text-sm font-primary font-medium text-white/60">
-              {displayCount + 231}+ already waiting
+              {displayCount}+ already waiting
             </span>
           </div>
         </motion.div>
 
         {/* ── Benefit Cards ── */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-16 md:mt-20">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 mt-16 md:mt-20">
           {benefitCards.map((card) => (
             <motion.div
               key={card.title}
