@@ -28,12 +28,39 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
+  const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
     fetch("/api/waitlist")
       .then((res) => res.json() as Promise<{ count: number }>)
       .then((data) => setWaitlistCount(data.count))
       .catch(() => setWaitlistCount(0));
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-20% 0px -40% 0px", // Detect sections crossing the upper-middle of viewport
+      }
+    );
+
+    const sectionIds = NAV_LINKS.filter((l) => l.href.startsWith("/#")).map(
+      (l) => l.href.substring(2)
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const displayCount = waitlistCount !== null ? waitlistCount : 231;
@@ -102,15 +129,24 @@ export function Navbar() {
           <div
             className={`${isScrolled ? "gap-2" : "gap-6"} hidden md:flex justify-center items-center w-fit absolute left-1/2 -translate-x-1/2 transition-all duration-200 ease-out`}
           >
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={`${isScrolled ? "text-xs whitespace-nowrap text-nowrap" : "text-sm"} font-medium text-text-accent hover:text-white-text transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-text-highlight rounded-md px-2 py-1`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = link.href.startsWith("/#") && activeSection === link.href.substring(2);
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={cn(
+                    isScrolled ? "text-xs whitespace-nowrap text-nowrap" : "text-sm",
+                    "font-medium transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-text-highlight rounded-md px-2 py-1",
+                    isActive
+                      ? "bg-linear-to-r from-[#3B82F6] to-white bg-clip-text text-transparent"
+                      : "text-text-accent hover:text-white-text"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Right Actions: CTA & Hamburger */}
@@ -196,16 +232,24 @@ export function Navbar() {
             </div>
 
             <nav className="flex flex-col gap-6 text-xl font-medium">
-              {NAV_LINKS.filter((l) => l.label !== "Home").map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-light-dull-text hover:text-text-accent transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {NAV_LINKS.filter((l) => l.label !== "Home").map((link) => {
+                const isActive = link.href.startsWith("/#") && activeSection === link.href.substring(2);
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "transition-colors",
+                      isActive
+                        ? "bg-linear-to-r from-[#3B82F6] to-white bg-clip-text text-transparent"
+                        : "text-light-dull-text hover:text-text-accent"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
               <div className="mt-8 pt-8 border-t border-light-dull-text/20">
                 <motion.button
                   whileTap={{ scale: 0.96, boxShadow: "none" }}

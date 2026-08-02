@@ -17,8 +17,8 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json() as { email?: string; utmSource?: string };
-    const { email, utmSource } = body;
+    const body = await req.json() as { email?: string; utm?: string };
+    const { email, utm } = body;
 
     if (!email || typeof email !== "string") {
       return NextResponse.json(
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
       update: {},
       create: {
         email: normalised,
-        utmSource: utmSource ?? null,
+        utm: utm ?? null,
       },
     });
 

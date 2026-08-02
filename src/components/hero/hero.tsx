@@ -8,7 +8,7 @@ const BUTTON_TRANSITION = { duration: 0.15, ease: "easeOut" } as const;
 
 export function Hero() {
   return (
-    <section className="relative w-full flex flex-col items-center justify-center md:pt-24 sm:pt-12 pb-32 z-10 text-center">
+    <section id="home" className="relative w-full flex flex-col items-center justify-center md:pt-24 sm:pt-12 pb-32 z-10 text-center">
       <div className="container mx-auto md:px-6 flex flex-col items-center max-w-[1120px]">
         {/* Heading */}
         <motion.h1

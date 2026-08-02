@@ -539,3 +539,18 @@ This document should always reflect the current state of the repository.
 
 - Run Prisma migration and connect to production Neon database.
 - Deploy to Vercel.
+
+## 2026-08-02 (UTM Persistence)
+
+### Completed
+
+- **UTM Persistence Implementation** (`utm.md` prompt):
+  - Renamed `utmSource` to `utm` in `prisma/schema.prisma` `WaitlistUser` model.
+  - Updated `src/app/api/waitlist/route.ts` to expect and save the `utm` field, saving `null` if absent.
+  - Implemented `sessionStorage` in `Waitlist` component (`src/components/waitlist/waitlist.tsx`) to capture and persist the `?utm=` URL parameter across the session, preventing data loss if users navigate before submitting.
+  - Ensured the existing UI, email flow, and form validation remain untouched.
+
+### Next Session
+
+- Run Prisma migration (currently failing due to unreachable Neon database) and connect to production.
+- Deploy to Vercel.

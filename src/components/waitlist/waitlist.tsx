@@ -167,9 +167,13 @@ function AvatarStack() {
 interface SuccessModalProps {
   open: boolean;
   onClose: () => void;
+  position: number | null;
 }
 
-function SuccessModal({ open, onClose }: SuccessModalProps) {
+function SuccessModal({ open, onClose, position }: SuccessModalProps) {
+  const getQueuePosition = (pos: number | null) => {
+    return pos !== null ? pos : 231;
+  };
   const [copied, setCopied] = useState(false);
   const shareUrl =
     typeof window !== "undefined"
@@ -191,7 +195,7 @@ function SuccessModal({ open, onClose }: SuccessModalProps) {
       try {
         await navigator.share({
           title: "Examinr.ai — Join the waitlist",
-          text: "I just joined the Examinr.ai waitlist. AI-powered exam preparation is coming. Join now:",
+          text: "I just joined the Examinr.ai waitlist. They’re building a better way to study, and I’m excited to see where they take it. Join me: ",
           url: shareUrl,
         });
       } catch {
@@ -250,10 +254,7 @@ function SuccessModal({ open, onClose }: SuccessModalProps) {
           <Image src={'/circle.png'} width={475} height={475} alt="circle" className="absolute top-[20px] left-1/2 -translate-x-1/2 -z-1000 blur-[50px]" />
               {/* Check icon */}
               <div className="mb-6 relative">
-                <div className="w-16 h-16 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center">
-                  <CheckCircle className="w-8 h-8 text-[#3B82F6]" />
-                </div>
-                {/* Soft glow ring */}
+                
                 <div
                   className="absolute inset-0 rounded-full pointer-events-none"
                   style={{ boxShadow: "0 0 32px rgba(59,130,246,0.18)" }}
@@ -261,7 +262,7 @@ function SuccessModal({ open, onClose }: SuccessModalProps) {
               </div>
 
               {/* Heading */}
-              <h3 className="font-display font-normal text-2xl md:text-[48px] text-white-text mb-3 tracking-[-3%]">
+              <h3 className="pt-20 font-display font-normal text-2xl md:text-[48px] text-white-text mb-3 tracking-[-3%]">
                 {"You're on the waitlist!"}
               </h3>
 
@@ -273,12 +274,12 @@ function SuccessModal({ open, onClose }: SuccessModalProps) {
               {/* Extra detail */}
               <div className="grid grid-cols-2 gap-27.5 mb-5">
                 <div className="">
-                  <p className="tracking-[-3%] text-nowrap font-normal text-text-accent">Estimated time to launch</p>
+                  <p className="tracking-[-3%] text-nowrap font-normal text-text-accent">Estimated time of launch</p>
                   <p className="font-display text-[24px] tracking-[7%] text-white-text">Early 2027</p>
                 </div>
                 <div className="">
                   <p className="tracking-[-3%] text-nowrap font-normal text-text-accent">Position on queue</p>
-                  <p className="font-display text-[24px] tracking-[7%] text-white-text">#{112}</p>
+                  <p className="font-display text-[24px] tracking-[7%] text-white-text">#{getQueuePosition(position)}</p>
                 </div>
               </div>
               <p className="text-xs mb-0.5">Help us grow the waitlist</p>
@@ -335,6 +336,7 @@ export function Waitlist() {
   const [error, setError] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(true);
   const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
+  const [utm, setUtm] = useState<string | undefined>(undefined);
 
   // Fetch live waitlist count once on mount.
   useEffect(() => {
@@ -342,6 +344,23 @@ export function Waitlist() {
       .then((res) => res.json() as Promise<{ count: number }>)
       .then((data) => setWaitlistCount(data.count))
       .catch(() => setWaitlistCount(0));
+  }, []);
+
+  // Capture and persist utm parameter.
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const urlUtm = params.get("utm");
+      if (urlUtm) {
+        sessionStorage.setItem("waitlist_utm", urlUtm);
+        setUtm(urlUtm);
+      } else {
+        const storedUtm = sessionStorage.getItem("waitlist_utm");
+        if (storedUtm) {
+          setUtm(storedUtm);
+        }
+      }
+    }
   }, []);
 
   const handleSubmit = useCallback(
@@ -356,15 +375,11 @@ export function Waitlist() {
 
       setIsSubmitting(true);
 
-      // Read utm_source from the current URL query string.
-      const params = new URLSearchParams(window.location.search);
-      const utmSource = params.get("utm_source") ?? undefined;
-
       try {
         const response = await fetch("/api/waitlist", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: email.trim(), utmSource }),
+          body: JSON.stringify({ email: email.trim(), utm }),
         });
 
         const data = (await response.json()) as {
@@ -420,7 +435,7 @@ export function Waitlist() {
   return (
     <>
       {/* ── Success Modal ── */}
-      <SuccessModal open={modalOpen} onClose={() => setModalOpen(true)} />
+      <SuccessModal open={modalOpen} onClose={() => setModalOpen(false)} position={waitlistCount} />
 
       <section
         id="waitlist"
