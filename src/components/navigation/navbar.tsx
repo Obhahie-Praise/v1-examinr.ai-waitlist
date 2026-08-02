@@ -139,7 +139,7 @@ export function Navbar() {
                     isScrolled ? "text-xs whitespace-nowrap text-nowrap" : "text-sm",
                     "font-medium transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-text-highlight rounded-md px-2 py-1",
                     isActive
-                      ? "bg-linear-to-r from-[#3B82F6] to-white bg-clip-text text-transparent"
+                      ? "bg-linear-to-b from-[#3B82F6] to-white bg-clip-text text-transparent"
                       : "text-text-accent hover:text-white-text"
                   )}
                 >

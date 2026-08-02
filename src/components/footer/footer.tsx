@@ -22,25 +22,25 @@ const SOCIAL_LINKS = [
   {
     label: "GITHUB",
     icon: siGithub,
-    href: "https://github.com",
+    href: "https://github.com/Obhahie-Praise",
     aria: "Visit GitHub profile",
   },
   {
     label: "EMAIL",
     icon: siGmail,
-    href: "mailto:hello@examinr.ai",
+    href: "mailto:obhahiepraise@gmail.com",
     aria: "Send an email",
   },
   {
     label: "X (Twitter)",
     icon: siX,
-    href: "https://x.com",
+    href: "https://x.com/praizedevx",
     aria: "Visit X (Twitter) profile",
   },
   {
     label: "TIKTOK",
     icon: siTiktok,
-    href: "https://tiktok.com",
+    href: "https://www.tiktok.com/@praise_d_builder",
     aria: "Visit TikTok profile",
   },
   {
