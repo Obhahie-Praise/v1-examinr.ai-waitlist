@@ -40,8 +40,6 @@ const FADE_UP: Variants = {
 
 // ─── Sub-components ────────────────────────────────────────────────────────────
 
-
-
 // ─── Card decorations ─────────────────────────────────────────────────────────
 
 // Card 1 — subtle blue vertical accent bar on the left edge.
@@ -176,7 +174,7 @@ function SuccessModal({ open, onClose }: SuccessModalProps) {
   const shareUrl =
     typeof window !== "undefined"
       ? window.location.origin
-      : "https://examinr.ai";
+      : "https://examinr-ai.vercel.app?utm=user";
 
   const handleCopy = useCallback(async () => {
     try {
@@ -230,29 +228,26 @@ function SuccessModal({ open, onClose }: SuccessModalProps) {
             aria-hidden="true"
             onClick={onClose}
           />
+          
 
           {/* Panel */}
           <motion.div
             key="modal-panel"
             role="dialog"
             aria-modal="true"
-            aria-label="You are on the waitlist"
+            aria-label="You are on the waitlist!"
             initial={{ opacity: 0, scale: 0.95, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 12 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="fixed inset-0 z-[201] flex items-center justify-center p-6 pointer-events-none"
           >
-            <div className="relative pointer-events-auto w-full max-w-md rounded-[28px] border border-white/[0.08] bg-[#0D1929]/95 backdrop-blur-md p-8 md:p-10 flex flex-col items-center text-center shadow-2xl shadow-black/40">
-              {/* Close button */}
-              <button
-                onClick={onClose}
-                className="absolute top-5 right-5 p-1.5 text-white/40 hover:text-white/70 transition-colors rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]"
-                aria-label="Close"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
+            
+            <div className="relative pointer-events-auto w-full max-w-md rounded-[28px] border overflow-hidden border-white/[0.08] bg-app-bg backdrop-blur-md p-8 md:p-10 flex flex-col items-center text-center shadow-2xl shadow-black/40">
+            <div className="absolute left-1/2 -translate-x-1/2 top-[31px] -z-100 w-full">
+            <Image src={'/circle.png'} width={475} height={475} alt="circle" priority/>
+          </div>
+          <Image src={'/circle.png'} width={475} height={475} alt="circle" className="absolute top-[20px] left-1/2 -translate-x-1/2 -z-1000 blur-[50px]" />
               {/* Check icon */}
               <div className="mb-6 relative">
                 <div className="w-16 h-16 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center">
@@ -266,19 +261,30 @@ function SuccessModal({ open, onClose }: SuccessModalProps) {
               </div>
 
               {/* Heading */}
-              <h3 className="font-display font-normal text-2xl md:text-3xl text-white-text mb-3">
-                {"You're on the list."}
+              <h3 className="font-display font-normal text-2xl md:text-[48px] text-white-text mb-3 tracking-[-3%]">
+                {"You're on the waitlist!"}
               </h3>
 
               {/* Supporting text */}
-              <p className="font-primary text-sm md:text-[15px] leading-relaxed text-white-text/50 max-w-[300px] mb-8">
-                {
-                  "We'll reach out when early access opens. In the meantime, help us grow the waitlist."
-                }
+              <p className="font-primary text-sm md:text-[15px] leading-relaxed text-white-text/70 max-w-[300px] mb-5">
+                Thanks for signing up. <br /> We’ll notify you once the beta is ready.
               </p>
 
+              {/* Extra detail */}
+              <div className="grid grid-cols-2 gap-27.5 mb-5">
+                <div className="">
+                  <p className="tracking-[-3%] text-nowrap font-normal text-text-accent">Estimated time to launch</p>
+                  <p className="font-display text-[24px] tracking-[7%] text-white-text">Early 2027</p>
+                </div>
+                <div className="">
+                  <p className="tracking-[-3%] text-nowrap font-normal text-text-accent">Position on queue</p>
+                  <p className="font-display text-[24px] tracking-[7%] text-white-text">#{112}</p>
+                </div>
+              </div>
+              <p className="text-xs mb-0.5">Help us grow the waitlist</p>
+
               {/* Share + Copy actions */}
-              <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
+              <div className="flex flex-col items-center gap-2 w-full">
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.96, boxShadow: "none" }}
@@ -327,7 +333,7 @@ export function Waitlist() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(true);
   const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
 
   // Fetch live waitlist count once on mount.
@@ -414,7 +420,7 @@ export function Waitlist() {
   return (
     <>
       {/* ── Success Modal ── */}
-      <SuccessModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <SuccessModal open={modalOpen} onClose={() => setModalOpen(true)} />
 
       <section
         id="waitlist"
@@ -485,9 +491,9 @@ export function Waitlist() {
               required
               autoComplete="email"
               aria-label="Your email address"
-                aria-describedby={error ? "waitlist-error" : undefined}
-                className="flex-1 px-5 py-3 sm:py-0 font-primary placeholder:text-white/30 focus:outline-none rounded-[10px] sm:rounded-none bg-[#1E4F9F]/10 sm:bg-transparent border-[0.5px] border-white/[0.09] sm:border-transparent focus:border-[#3B82F6]/50 sm:focus:border-transparent focus:ring-1 focus:ring-[#3B82F6]/30 sm:focus:ring-0 transition-all duration-200 ease-out"
-              />
+              aria-describedby={error ? "waitlist-error" : undefined}
+              className="flex-1 px-5 py-3 sm:py-0 font-primary placeholder:text-white/30 focus:outline-none rounded-[10px] sm:rounded-none bg-[#1E4F9F]/10 sm:bg-transparent border-[0.5px] border-white/[0.09] sm:border-transparent focus:border-[#3B82F6]/50 sm:focus:border-transparent focus:ring-1 focus:ring-[#3B82F6]/30 sm:focus:ring-0 transition-all duration-200 ease-out"
+            />
 
             {/* Submit button — matches the exact button style used site-wide. */}
             <motion.button
@@ -563,11 +569,29 @@ export function Waitlist() {
 
               {/* Decorative accents */}
               {card.title === "Early access." ? (
-                <Image src="/early_access.svg" alt="" width={120} height={120} className="absolute top-0 left-0 opacity-10" />
+                <Image
+                  src="/early_access.svg"
+                  alt=""
+                  width={120}
+                  height={120}
+                  className="absolute top-0 left-0 opacity-10"
+                />
               ) : card.title === "Your feedback" ? (
-                <Image src="/feedback.svg" alt="" width={120} height={120} className="absolute left-[99.54px] top-[17.54px] opacity-10" />
+                <Image
+                  src="/feedback.svg"
+                  alt=""
+                  width={120}
+                  height={120}
+                  className="absolute left-[99.54px] top-[17.54px] opacity-10"
+                />
               ) : (
-                <Image src="/momentum.svg" alt="" width={120} height={120} className="absolute left-[242px] bottom-0 opacity-10" />
+                <Image
+                  src="/momentum.svg"
+                  alt=""
+                  width={120}
+                  height={120}
+                  className="absolute left-[242px] bottom-0 opacity-10"
+                />
               )}
 
               {/* Text */}
