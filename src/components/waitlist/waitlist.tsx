@@ -196,7 +196,7 @@ function SuccessModal({ open, onClose, position, email }: SuccessModalProps) {
       try {
         await navigator.share({
           title: "Examinr.ai — Join the waitlist",
-          text: "I just joined the Examinr.ai waitlist. They’re building a better way to study, and I’m excited to see where they take it. Join me: ",
+          text: "I just joined the Examinr-ai waitlist. They’re building a better way to study, and I’m excited to see where they take it. Join me: ",
           url: shareUrl,
         });
       } catch {
