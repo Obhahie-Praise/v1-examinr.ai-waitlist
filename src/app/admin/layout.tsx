@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AdminSidebar } from "@/components/admin/admin-sidebar";
 
 export const metadata: Metadata = {
   title: "Examinr.ai Admin",
@@ -11,13 +12,9 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen flex-col bg-app-bg text-text-accent">
-      <header className="p-8 border-b border-light-dull-text/20">
-        <p className="text-sm font-semibold uppercase tracking-widest text-light-dull-text">
-          Examinr.ai / Admin Route
-        </p>
-      </header>
-      <main className="flex-1">{children}</main>
+    <div className="flex flex-col md:flex-row min-h-screen bg-app-bg text-text-accent">
+      <AdminSidebar />
+      <main className="flex-1 min-w-0 md:max-w-5xl md:mx-auto">{children}</main>
     </div>
   );
 }

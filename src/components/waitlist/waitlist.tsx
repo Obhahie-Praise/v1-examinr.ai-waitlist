@@ -168,9 +168,10 @@ interface SuccessModalProps {
   open: boolean;
   onClose: () => void;
   position: number | null;
+  email: string;
 }
 
-function SuccessModal({ open, onClose, position }: SuccessModalProps) {
+function SuccessModal({ open, onClose, position, email }: SuccessModalProps) {
   const getQueuePosition = (pos: number | null) => {
     return pos !== null ? pos : 231;
   };
@@ -247,7 +248,7 @@ function SuccessModal({ open, onClose, position }: SuccessModalProps) {
             className="fixed inset-0 z-[201] flex items-center justify-center p-6 pointer-events-none"
           >
             
-            <div className="relative pointer-events-auto w-full max-w-md rounded-[28px] border overflow-hidden border-white/[0.08] bg-app-bg backdrop-blur-md p-8 md:p-10 flex flex-col items-center text-center shadow-2xl shadow-black/40">
+            <div className="relative pointer-events-auto w-full max-w-[537px] rounded-[28px] border overflow-hidden border-white/[0.08] bg-app-bg backdrop-blur-md p-8 md:p-10 flex flex-col items-center text-center shadow-2xl shadow-black/40 sm:scale-100 scale-90">
             <div className="absolute left-1/2 -translate-x-1/2 top-[31px] -z-100 w-full">
             <Image src={'/circle.png'} width={475} height={475} alt="circle" priority/>
           </div>
@@ -274,8 +275,8 @@ function SuccessModal({ open, onClose, position }: SuccessModalProps) {
               {/* Extra detail */}
               <div className="grid grid-cols-2 gap-27.5 mb-5">
                 <div className="">
-                  <p className="tracking-[-3%] text-nowrap font-normal text-text-accent">Estimated time of launch</p>
-                  <p className="font-display text-[24px] tracking-[7%] text-white-text">Early 2027</p>
+                  <p className="tracking-[-3%] text-nowrap font-normal text-text-accent">Your email</p>
+                  <p className="font-display text-[18px] tracking-[7%] text-white-text">{email}</p>
                 </div>
                 <div className="">
                   <p className="tracking-[-3%] text-nowrap font-normal text-text-accent">Position on queue</p>
@@ -334,7 +335,8 @@ export function Waitlist() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [submittedEmail, setSubmittedEmail] = useState("");
   const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
   const [utm, setUtm] = useState<string | undefined>(undefined);
 
@@ -390,6 +392,7 @@ export function Waitlist() {
         if (!response.ok || !data.success) {
           setError(data.error ?? "Something went wrong. Please try again.");
         } else {
+          setSubmittedEmail(email.trim());
           setEmail("");
           setModalOpen(true);
           // Optimistically increment the count for a better perceived experience.
@@ -435,7 +438,7 @@ export function Waitlist() {
   return (
     <>
       {/* ── Success Modal ── */}
-      <SuccessModal open={modalOpen} onClose={() => setModalOpen(false)} position={waitlistCount} />
+      <SuccessModal open={modalOpen} onClose={() => setModalOpen(false)} position={waitlistCount} email={submittedEmail} />
 
       <section
         id="waitlist"

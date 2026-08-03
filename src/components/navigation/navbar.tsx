@@ -48,11 +48,11 @@ export function Navbar() {
       },
       {
         rootMargin: "-20% 0px -40% 0px", // Detect sections crossing the upper-middle of viewport
-      }
+      },
     );
 
     const sectionIds = NAV_LINKS.filter((l) => l.href.startsWith("/#")).map(
-      (l) => l.href.substring(2)
+      (l) => l.href.substring(2),
     );
 
     sectionIds.forEach((id) => {
@@ -130,17 +130,21 @@ export function Navbar() {
             className={`${isScrolled ? "gap-2" : "gap-6"} hidden md:flex justify-center items-center w-fit absolute left-1/2 -translate-x-1/2 transition-all duration-200 ease-out`}
           >
             {NAV_LINKS.map((link) => {
-              const isActive = link.href.startsWith("/#") && activeSection === link.href.substring(2);
+              const isActive =
+                link.href.startsWith("/#") &&
+                activeSection === link.href.substring(2);
               return (
                 <Link
                   key={link.label}
                   href={link.href}
                   className={cn(
-                    isScrolled ? "text-xs whitespace-nowrap text-nowrap" : "text-sm",
+                    isScrolled
+                      ? "text-xs whitespace-nowrap text-nowrap"
+                      : "text-sm",
                     "font-medium transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-text-highlight rounded-md px-2 py-1",
                     isActive
                       ? "bg-linear-to-b from-[#3B82F6] to-white bg-clip-text text-transparent"
-                      : "text-text-accent hover:text-white-text"
+                      : "text-text-accent hover:text-white-text",
                   )}
                 >
                   {link.label}
@@ -155,13 +159,31 @@ export function Navbar() {
               <div className="text-xs hidden md:flex items-center gap-6">
                 <div className="w-fit h-fit flex items-center relative">
                   <span className="w-4.5 h-4.5 rounded-full border-app-bg border z-[1000] relative overflow-hidden flex items-center justify-center shrink-0">
-                    <Image src="/user-1.jpg" alt="" fill sizes="18px" className="object-cover" />
+                    <Image
+                      src="/user-1.jpg"
+                      alt=""
+                      fill
+                      sizes="18px"
+                      className="object-cover"
+                    />
                   </span>
                   <span className="w-4.5 h-4.5 rounded-full border-app-bg border absolute left-2.25 z-[1000] overflow-hidden flex items-center justify-center shrink-0">
-                    <Image src="/user-2.jpg" alt="" fill sizes="18px" className="object-cover" />
+                    <Image
+                      src="/user-2.jpg"
+                      alt=""
+                      fill
+                      sizes="18px"
+                      className="object-cover"
+                    />
                   </span>
                   <span className="w-4.5 h-4.5 rounded-full border-app-bg border absolute left-4.5 z-[1000] overflow-hidden flex items-center justify-center shrink-0">
-                    <Image src="/user-3.jpg" alt="" fill sizes="18px" className="object-cover" />
+                    <Image
+                      src="/user-3.jpg"
+                      alt=""
+                      fill
+                      sizes="18px"
+                      className="object-cover"
+                    />
                   </span>
                 </div>
                 {displayCount}+ already waiting
@@ -177,12 +199,17 @@ export function Navbar() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96, boxShadow: "none" }}
               transition={BUTTON_TRANSITION}
-              className={cn(
-                "hidden md:inline-flex items-center justify-center rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-colors hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-app-bg focus-visible:ring-text-highlight will-change-transform",
-                isScrolled ? "px-4.5 py-2 text-xs" : "px-4 py-2.5 text-sm",
-              )}
             >
-              Join waitlist
+              <Link
+                href={"/#waitlist"}
+                className={cn(
+                  "hidden md:inline-flex items-center justify-center rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-colors hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-app-bg focus-visible:ring-text-highlight will-change-transform",
+                  isScrolled ? "px-4.5 py-2 text-xs" : "px-4 py-2.5 text-sm",
+                )}
+              >
+                {" "}
+                Join waitlist
+              </Link>
             </motion.button>
 
             {/* Mobile Menu Toggle */}
@@ -233,7 +260,9 @@ export function Navbar() {
 
             <nav className="flex flex-col gap-6 text-xl font-medium">
               {NAV_LINKS.filter((l) => l.label !== "Home").map((link) => {
-                const isActive = link.href.startsWith("/#") && activeSection === link.href.substring(2);
+                const isActive =
+                  link.href.startsWith("/#") &&
+                  activeSection === link.href.substring(2);
                 return (
                   <Link
                     key={link.label}
@@ -243,7 +272,7 @@ export function Navbar() {
                       "transition-colors",
                       isActive
                         ? "bg-linear-to-r from-[#3B82F6] to-white bg-clip-text text-transparent"
-                        : "text-light-dull-text hover:text-text-accent"
+                        : "text-light-dull-text hover:text-text-accent",
                     )}
                   >
                     {link.label}

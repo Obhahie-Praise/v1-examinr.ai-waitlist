@@ -571,3 +571,21 @@ This document should always reflect the current state of the repository.
 
 - Run Prisma migration and connect to production.
 - Deploy to Vercel.
+
+## 2026-08-02 (Admin Dashboard Implementation)
+
+### Completed
+
+- **Admin Dashboard Infrastructure** (`admin.md` prompt):
+  - Configured JWT-based authentication using `jose` and protected routes with a Next.js `proxy.ts`.
+  - Implemented `/admin/login` page with secure server actions.
+  - Developed the Dashboard UI (`/admin`) incorporating `WaitlistTable` (paginated server-side fetch with bulk delete/export capabilities).
+  - Integrated `recharts` to render `GrowthChart` and `SourcesChart`, dynamically sourcing data from `/api/admin/analytics`.
+  - Built robust backend API routes for metrics, analytics aggregations, CSV exports, and user deletions.
+  - Adhered strictly to the premium UI aesthetic, implementing a consistent colour palette and responsive designs.
+
+### Next Session
+
+- Run Prisma migration and connect to production.
+- Test and verify UTM implementation (post-migration).
+- Deploy to Vercel.

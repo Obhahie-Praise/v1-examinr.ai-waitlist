@@ -2,13 +2,17 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 // Shared press interaction — matches the navbar CTA for consistent interaction language.
 const BUTTON_TRANSITION = { duration: 0.15, ease: "easeOut" } as const;
 
 export function Hero() {
   return (
-    <section id="home" className="relative w-full flex flex-col items-center justify-center md:pt-24 sm:pt-12 pb-32 z-10 text-center">
+    <section
+      id="home"
+      className="relative w-full flex flex-col items-center justify-center md:pt-24 sm:pt-12 pb-32 z-10 text-center"
+    >
       <div className="container mx-auto md:px-6 flex flex-col items-center max-w-[1120px]">
         {/* Heading */}
         <motion.h1
@@ -41,7 +45,8 @@ export function Hero() {
           animate="visible"
           className="text-lg md:text-[16px] text-text-accent max-w-[443px] md:mb-5 mb-6 font-primary font-medium leading-[132.2%] tracking-[-6%]"
         >
-          The AI designed to help students prepare for exams with predictions, simulations &amp; endless resources
+          The AI designed to help students prepare for exams with predictions,
+          simulations &amp; endless resources
         </motion.p>
 
         {/* Buttons */}
@@ -67,9 +72,16 @@ export function Hero() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.96, boxShadow: "none" }}
             transition={BUTTON_TRANSITION}
-            className="px-5 md:w-fit w-full sm:py-2.5 py-3 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-colors hover:brightness-110 will-change-transform"
           >
-            Join waitlist
+            <Link
+              href={"/#waitlist"}
+              className={
+                "px-5 md:w-fit w-full sm:py-2.5 py-3 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-colors hover:brightness-110 will-change-transform"
+              }
+            >
+              {" "}
+              Join waitlist
+            </Link>
           </motion.button>
 
           {/* Secondary CTA — same interaction language, same timing. */}
@@ -77,9 +89,14 @@ export function Hero() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.96 }}
             transition={BUTTON_TRANSITION}
-            className="px-5 md:w-fit w-full sm:py-2.5 py-3 rounded-[10px] bg-light-border border border-light-border/20 text-white-text font-medium transition-colors hover:bg-white/5 will-change-transform"
           >
-            See the vision
+            <Link
+              href={"/research"}
+              className="px-5 md:w-fit w-full sm:py-2.5 py-3 rounded-[10px] bg-light-border border border-light-border/20 text-white-text font-medium transition-colors hover:bg-white/5 will-change-transform"
+            >
+              {" "}
+              See the vision
+            </Link>
           </motion.button>
         </motion.div>
 
