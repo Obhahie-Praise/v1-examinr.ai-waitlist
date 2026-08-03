@@ -46,7 +46,7 @@ const SOCIAL_LINKS = [
   {
     label: "WHATSAPP",
     icon: siWhatsapp,
-    href: "https://whatsapp.com",
+    href: "https://wa.link/zdk363",
     aria: "Chat on WhatsApp",
   },
 ];
