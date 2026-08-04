@@ -283,9 +283,10 @@ export function Navbar() {
                 <motion.button
                   whileTap={{ scale: 0.96, boxShadow: "none" }}
                   transition={BUTTON_TRANSITION}
-                  className="w-full py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium text-lg transition-colors hover:brightness-110 will-change-transform"
+                  className="w-full"
                 >
-                  Join the Waitlist
+                  <Link href={'/#waitlist'} className="block w-full py-2.5 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium text-lg transition-colors hover:brightness-110 will-change-transform">Join waitlist</Link>
+                 
                 </motion.button>
               </div>
             </nav>
