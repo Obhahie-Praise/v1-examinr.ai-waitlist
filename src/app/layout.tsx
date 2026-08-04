@@ -28,9 +28,12 @@ export const metadata: Metadata = {
   openGraph: {
   title: "Examinr.ai waitlist",
   description: "The official public waitlist for Examinr.ai",
+  url: "https://examinr-ai.vercel.app",
+  siteName: "Examinr.ai",
+  type: "website",
   images: [
     {
-      url: "/hero.png",
+      url: "https://examinr-ai.vercel.app/hero.png",
       width: 1200,
       height: 630,
       alt: "Examinr.ai",
