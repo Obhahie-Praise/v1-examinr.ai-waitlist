@@ -24,7 +24,19 @@ export const metadata: Metadata = {
   description: "The official public waitlist for Examinr.ai",
   icons: {
     icon: "/favicon.svg"
-  }
+  },
+  openGraph: {
+  title: "Examinr.ai waitlist",
+  description: "The official public waitlist for Examinr.ai",
+  images: [
+    {
+      url: "/hero.png",
+      width: 1200,
+      height: 630,
+      alt: "Examinr.ai",
+    },
+  ],
+}
 };
 
 export default function RootLayout({
