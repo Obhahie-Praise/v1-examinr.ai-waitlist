@@ -72,11 +72,12 @@ export function Hero() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.96, boxShadow: "none" }}
             transition={BUTTON_TRANSITION}
+className='w-full'
           >
             <Link
               href={"/#waitlist"}
               className={
-                "px-5 md:w-fit w-full sm:py-2.5 py-3 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-colors hover:brightness-110 will-change-transform"
+                "px-5 md:w-fit w-full block sm:py-2.5 py-3 rounded-[10px] bg-linear-to-b from-[#3B82F6] to-[#052353] text-white font-medium transition-colors hover:brightness-110 will-change-transform"
               }
             >
               {" "}
@@ -89,10 +90,11 @@ export function Hero() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.96 }}
             transition={BUTTON_TRANSITION}
+className='w-full'
           >
             <Link
               href={"/research"}
-              className="px-5 md:w-fit w-full sm:py-2.5 py-3 rounded-[10px] bg-light-border border border-light-border/20 text-white-text font-medium transition-colors hover:bg-white/5 will-change-transform"
+              className="px-5 md:w-fit w-full text-nowrap block sm:py-2.5 py-3 rounded-[10px] bg-light-border border border-light-border/20 text-white-text font-medium transition-colors hover:bg-white/5 will-change-transform"
             >
               {" "}
               See the vision
