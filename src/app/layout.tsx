@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://examinr-ai.vercel.app/hero.png",
+        url: "https://examinr-ai.vercel.app/launch.png",
         width: 1200,
         height: 630,
         alt: "Examinr.ai",
